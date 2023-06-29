@@ -1,11 +1,22 @@
-import { useState } from 'react'
+import { Col, Row } from 'react-bootstrap'
 import './App.css'
+import Header from './components/header'
+import Sidebar from './components/sidebar'
 
 function App() {
 
   return (
     <>
-      <h1>Iniciando proyecto Easy HR</h1>
+      <Header />
+      <Row>
+        <Col xs={4} sm={2 }>
+          <Sidebar />
+        </Col>
+
+        <Col>
+          <div className="content">contenido</div>
+        </Col>
+      </Row>
     </>
   )
 }
