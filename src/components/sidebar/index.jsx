@@ -6,7 +6,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <ul>
         <li className="text-center pb-3">
-          <Link to="/dashboard/page1">page1</Link>
+          <Link to="/dashboard/profile">Perfil</Link>
         </li>
 
         <li className="text-center pb-3">

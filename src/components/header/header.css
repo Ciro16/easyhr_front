@@ -1,0 +1,17 @@
+header {
+  background-color: blue;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT22L6VKhFuK1Xzqzn-9FHKqer-zfYpXrB8_w&usqp=CAU");
+  background-position: center -10px;
+}
+
+header .profileImage {
+  max-width: 80px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: white;
+}
+
+header .infoHeaderEmployee {
+  height: 30px;
+  font-weight: 500;
+}
