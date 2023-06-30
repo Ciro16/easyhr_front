@@ -5,7 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./Dashboard.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
-import Profile from "./pages/perfil";
+import Profile from "./pages/profile";
+import OrganizationChart from "./pages/organization-chart";
+import Home from "./pages/home";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -13,8 +15,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard">
-          <Route path="" element={<Dashboard />} />
+          <Route path="" element={<Dashboard page={<Home />} />} />
           <Route path="profile" element={<Dashboard page={<Profile />} />} />
+          <Route
+            path="organization-chart"
+            element={<Dashboard page={<OrganizationChart />} />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

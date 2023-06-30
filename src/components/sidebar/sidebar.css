@@ -1,3 +1,9 @@
-.sidebar ul li{
+.sidebar ul li {
   list-style: none;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  display: block;
+  padding: 15px 0px;
 }

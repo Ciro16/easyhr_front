@@ -4,8 +4,7 @@ import Header from "./components/header";
 import Sidebar from "./components/sidebar";
 import PropTypes from "prop-types";
 
-function Dashboard(props) {
-  const { page } = props;
+function Dashboard({ page }) {
   return (
     <>
       <Header />
@@ -15,7 +14,7 @@ function Dashboard(props) {
         </Col>
 
         <Col>
-          <div className="content">{page && page}</div>
+          <div className="content">{page}</div>
         </Col>
       </Row>
     </>

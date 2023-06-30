@@ -4,17 +4,21 @@ import "./sidebar.css";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <ul>
-        <li className="text-center pb-3">
+      <ul className="ps-0 border-end">
+        <li className="text-center  border-bottom">
+          <Link to="/dashboard">Home</Link>
+        </li>
+
+        <li className="text-center  border-bottom">
           <Link to="/dashboard/profile">Perfil</Link>
         </li>
 
-        <li className="text-center pb-3">
-          <Link to="/page2">page2</Link>
+        <li className="text-center  border-bottom">
+          <Link to="/dashboard/organization-chart">Organigrama</Link>
         </li>
 
-        <li className="text-center pb-3">
-          <Link to="/page3">page3</Link>
+        <li className="text-center  border-bottom">
+          <Link to="/page3">Solicitudes</Link>
         </li>
       </ul>
       <Outlet />
