@@ -1,15 +1,25 @@
-import './sidebar.css'
+import { Link, Outlet } from "react-router-dom";
+import "./sidebar.css";
 
-const Sidebar = () => { 
+const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul>
-        <li className='text-center pb-3'>Inicio</li>
-        <li className='text-center pb-3'>Ejemplo 1</li>
-        <li className='text-center pb-3'>Ejemplo 2</li>
-      </ul>
-    </div>
-  )
-}
+        <li className="text-center pb-3">
+          <Link to="/dashboard/page1">page1</Link>
+        </li>
 
-export default Sidebar
+        <li className="text-center pb-3">
+          <Link to="/page2">page2</Link>
+        </li>
+
+        <li className="text-center pb-3">
+          <Link to="/page3">page3</Link>
+        </li>
+      </ul>
+      <Outlet />
+    </div>
+  );
+};
+
+export default Sidebar;
