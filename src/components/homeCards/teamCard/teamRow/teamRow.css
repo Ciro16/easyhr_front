@@ -1,0 +1,11 @@
+.teamCardContent {
+  border-color: var(--border-row-color) !important;
+}
+
+.teamCardContent .idNameEmployee {
+  font-size: 13px;
+}
+
+.teamCardContent .phoneNumbers {
+  font-size: 11px;
+}

@@ -1,5 +1,11 @@
+.sidebar {
+  background-color: var(--bg-card-color);
+  height: calc(100vh - var(--header-height));
+}
+
 .sidebar ul li {
   list-style: none;
+  border-color: var(--border-row-color) !important;
 }
 
 .sidebar ul li a {

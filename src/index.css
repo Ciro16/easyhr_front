@@ -1,3 +1,14 @@
+:root {
+  --header-height: 126px;
+
+  --bg-card-color: #fff;
+  --border-row-color: #f3f3f3;
+}
+
 body {
   background-color: #f9fafc !important;
+}
+
+.smallImage {
+  max-width: 40px;
 }

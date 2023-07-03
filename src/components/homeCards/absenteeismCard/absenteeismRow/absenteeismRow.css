@@ -1,0 +1,13 @@
+.circularGraph::before {
+  content: "";
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.graphValue {
+  position: relative;
+  font-size: 11px;
+}

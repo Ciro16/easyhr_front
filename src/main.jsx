@@ -4,10 +4,11 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./Dashboard.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Login from "./pages/login";
+import Home from "./pages/home";
 import Profile from "./pages/profile";
 import OrganizationChart from "./pages/organization-chart";
-import Home from "./pages/home";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

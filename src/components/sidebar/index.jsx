@@ -3,8 +3,8 @@ import "./sidebar.css";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
-      <ul className="ps-0 border-end">
+    <div className="sidebar border-end">
+      <ul className="ps-0">
         <li className="text-center  border-bottom">
           <Link to="/dashboard">Home</Link>
         </li>

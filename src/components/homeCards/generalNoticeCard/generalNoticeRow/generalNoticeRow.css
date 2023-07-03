@@ -1,0 +1,17 @@
+.generalNoticeCardContent {
+  border-color: var(--border-row-color) !important;
+}
+
+.generalNoticeCardContent .titleRow {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.generalNoticeCardContent .textRow,
+.generalNoticeCardContent .date {
+  font-size: 11px;
+}
+
+.generalNoticeCardContent .date {
+  color: #8d8d8d;
+}
