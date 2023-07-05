@@ -1,0 +1,21 @@
+.basicInfoCard {
+  position: relative;
+
+  background-color: var(--bg-card-color);
+  border-radius: 6px;
+}
+
+.basicInfoCard::before {
+  position: absolute;
+  left: -15px;
+
+  content: "";
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #52b99e;
+}
+
+.basiInfo {
+  font-size: 13px;
+}

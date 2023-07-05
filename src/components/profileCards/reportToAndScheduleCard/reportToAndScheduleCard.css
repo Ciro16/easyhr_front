@@ -1,0 +1,39 @@
+.reportToAndScheduleContainer {
+  height: 210px;
+}
+
+.reportToCard,
+.scheduleWorkCard {
+  background-color: var(--bg-card-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.reportToContent .position {
+  font-size: 11px;
+}
+
+.reportToContent .phoneNumeber {
+  font-size: 13px;
+}
+
+.reportToCard header,
+.scheduleWorkCard header {
+  position: relative;
+}
+
+.reportToCard header::before,
+.scheduleWorkCard header::before {
+  position: absolute;
+  left: -30px;
+
+  content: "";
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #52b99e;
+}
+
+.scheduleWorkCard .scheduleTitleRow {
+  font-size: 13px;
+}
