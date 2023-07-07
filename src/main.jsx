@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import Home from "./pages/home";
 import Profile from "./pages/profile";
-import OrganizationChart from "./pages/organization-chart";
+import OrganizationalChart from "./pages/organizational-chart";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -19,8 +19,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="" element={<Dashboard page={<Home />} />} />
           <Route path="profile" element={<Dashboard page={<Profile />} />} />
           <Route
-            path="organization-chart"
-            element={<Dashboard page={<OrganizationChart />} />}
+            path="organizational-chart"
+            element={<Dashboard page={<OrganizationalChart />} />}
           />
         </Route>
       </Routes>

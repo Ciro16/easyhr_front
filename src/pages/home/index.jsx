@@ -1,4 +1,5 @@
 import { Col, Row } from "react-bootstrap";
+import "./home.css";
 import TeamCard from "../../components/homeCards/teamCard";
 import GeneralNoticeCard from "../../components/homeCards/generalNoticeCard";
 import PendingApprovals from "../../components/homeCards/pendingApprovalsCard";
@@ -38,7 +39,7 @@ const Home = () => {
   ];
 
   return (
-    <Row className="g-3">
+    <Row className="homeContainer g-3">
       <Col sm={12} md={6} lg={4}>
         <TeamCard title="Tu equipo" counter={2} infoRow={team} />
       </Col>

@@ -1,0 +1,113 @@
+.organizationalChartButtons {
+  margin-left: 85%;
+  background-color: var(--bg-card-color);
+}
+
+.organizationalChartButtons button {
+  display: inline;
+  background-color: var(--bg-card-color);
+}
+
+.chartContainer {
+  width: 100%;
+  overflow-x: scroll;
+  position: absolute;
+}
+
+.organizationalChart {
+  text-align: center;
+  height: calc(100vh - var(--header-height));
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+.organizationalChart ul {
+  position: relative;
+  padding-top: 20px;
+  padding-left: 0;
+  transition: 0.5s;
+}
+
+.organizationalChart li {
+  position: relative;
+
+  display: inline-table;
+  text-align: center;
+  list-style-type: none;
+  padding: 10px;
+  transition: 0.5s;
+}
+
+.organizationalChart li::before,
+.organizationalChart li::after {
+  position: absolute;
+
+  content: "";
+  top: 0;
+  right: 50%;
+  border-top: 1px solid #ccc;
+  width: 50%;
+  height: 10px;
+}
+
+.organizationalChart li:after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #ccc;
+}
+
+.organizationalChart li:only-child:before,
+.organizationalChart li:only-child:after {
+  display: none;
+}
+
+.organizationalChart li:only-child {
+  padding-top: 0;
+}
+
+.organizationalChart li:first-child:before,
+.organizationalChart li:last-child:after {
+  border: 0 none;
+}
+
+.organizationalChart li:last-child:before {
+  border-right: 1px solid #ccc;
+  border-radius: 0px 5px 0px 0px;
+}
+
+.organizationalChart li:first-child:after {
+  border-radius: 5px 0px 0px 0px;
+}
+
+.organizationalChart ul ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px solid #ccc;
+  width: 0;
+  height: 20px;
+}
+
+.organizationalChart .organizationalChartCard {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.organizationalChart .cardImage {
+  max-width: 60px;
+}
+
+.organizationalChart .name,
+.organizationalChart .lastname {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.organizationalChart .cargo {
+  font-size: 10px;
+  color: #8d8d8d;
+}

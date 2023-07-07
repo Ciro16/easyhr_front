@@ -3,7 +3,9 @@
 }
 
 .pagesContainer {
+  width: 100%;
   height: calc(100vh - var(--header-height));
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: relative;
 }

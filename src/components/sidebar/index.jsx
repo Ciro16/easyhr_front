@@ -14,7 +14,7 @@ const Sidebar = () => {
         </li>
 
         <li className="text-center  border-bottom">
-          <Link to="/dashboard/organization-chart">Organigrama</Link>
+          <Link to="/dashboard/organizational-chart">Organigrama</Link>
         </li>
 
         <li className="text-center  border-bottom">
