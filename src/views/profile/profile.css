@@ -1,0 +1,6 @@
+.profileContainer {
+  max-height: calc(100vh - var(--header-height));
+  padding-bottom: 30px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

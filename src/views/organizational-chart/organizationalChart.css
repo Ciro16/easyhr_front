@@ -17,7 +17,7 @@
 .organizationalChart {
   text-align: center;
   height: calc(100vh - var(--header-height));
-  overflow: scroll;
+  overflow-x: scroll;
   white-space: nowrap;
 }
 
@@ -25,7 +25,7 @@
   position: relative;
   padding-top: 20px;
   padding-left: 0;
-  transition: 0.5s;
+  transition: 0.7s;
 }
 
 .organizationalChart li {
@@ -35,7 +35,7 @@
   text-align: center;
   list-style-type: none;
   padding: 10px;
-  transition: 0.5s;
+  transition: 0.7s;
 }
 
 .organizationalChart li::before,
@@ -48,6 +48,7 @@
   border-top: 1px solid #ccc;
   width: 50%;
   height: 10px;
+  transition: 0.7s;
 }
 
 .organizationalChart li:after {
@@ -87,18 +88,23 @@
   border-left: 1px solid #ccc;
   width: 0;
   height: 20px;
+  transition: 0.7s;
 }
 
 .organizationalChart .organizationalChartCard {
   border: 1px solid #ccc;
   padding: 10px;
+  width: 250px;
   display: inline-block;
   border-radius: 5px;
-  transition: 0.5s;
+  transition: 0.7s;
 }
 
 .organizationalChart .cardImage {
-  max-width: 60px;
+  width: 60px;
+  height: 60px;
+
+  object-fit: cover;
 }
 
 .organizationalChart .name,
@@ -109,5 +115,28 @@
 
 .organizationalChart .cargo {
   font-size: 10px;
-  color: #8d8d8d;
+  color: #696969;
+}
+
+.organizationalChartCard .headx {
+  color: #696969;
+}
+
+.organizationalChart li .organizationalChartCard:hover,
+.organizationalChart
+  li
+  .organizationalChartCard:hover
+  + ul
+  li
+  .organizationalChartCard {
+  background-color: #c8e4f8;
+  border: 1px solid #94a0b4;
+  box-shadow: 0px 0px 8px -5px #5f5f5f;
+}
+
+.organizationalChart li .organizationalChartCard:hover + ul li::before,
+.organizationalChart li .organizationalChartCard:hover + ul li::after,
+.organizationalChart li .organizationalChartCard:hover + ul::before,
+.organizationalChart li .organizationalChartCard:hover + ul ul::before {
+  border-color: #94a0b4;
 }

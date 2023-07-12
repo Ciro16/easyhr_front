@@ -2,9 +2,10 @@ import { Col, Row } from "react-bootstrap";
 import "./Dashboard.css";
 import Header from "./components/header";
 import Sidebar from "./components/sidebar";
-import PropTypes from "prop-types";
 
-function Dashboard({ page }) {
+import { Outlet } from "react-router-dom";
+
+function Dashboard() {
   return (
     <>
       <Header />
@@ -14,15 +15,13 @@ function Dashboard({ page }) {
         </Col>
 
         <Col>
-          <div className="pagesContainer py-3">{page}</div>
+          <div className="pagesContainer py-3">
+            <Outlet />
+          </div>
         </Col>
       </Row>
     </>
   );
 }
-
-Dashboard.propTypes = {
-  page: PropTypes.element,
-};
 
 export default Dashboard;

@@ -3,27 +3,48 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./Dashboard.jsx";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "sonner";
 
-import Login from "./pages/login";
-import Home from "./pages/home";
-import Profile from "./pages/profile";
-import OrganizationalChart from "./pages/organizational-chart";
+import Login from "./views/login";
+import Home from "./views/home";
+import Profile from "./views/profile";
+import OrganizationalChart from "./views/organizational-chart";
+// import Request from "./views/request";
+
+import { ProtectedRoute } from "./components/protectedRoute";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
+      {/* Notifications */}
+      <Toaster richColors position="top-center" />
+
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard">
-          <Route path="" element={<Dashboard page={<Home />} />} />
-          <Route path="profile" element={<Dashboard page={<Profile />} />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="" element={<Home />} />
+          <Route path="profile" element={<Profile />} />
           <Route
             path="organizational-chart"
-            element={<Dashboard page={<OrganizationalChart />} />}
+            element={<OrganizationalChart />}
           />
+          {/* <Route
+            path="request"
+            element={
+                <Request />
+            }
+          /> */}
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

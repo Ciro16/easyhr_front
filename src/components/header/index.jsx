@@ -1,21 +1,63 @@
 import { Container, Image } from "react-bootstrap";
 import "./header.css";
+import useStore from "../../store/store";
+import { useEffect, useState } from "react";
+import { _httpClient } from "../../utils/httpClient";
+
+import withoutPicture from "../../assets/without_profile.png"
 
 const Header = () => {
+  const { userId } = useStore((state) => state.userInfo);
+  const [masterDataInfo, setMasterDataInfo] = useState({});
+
+  const [profilePicture, setProfilePicture] = useState("");
+
+  useEffect(() => {
+    const fetchMasterdata = async () => {
+      const today = new Date().toISOString().split("T")[0];
+
+      const [dataEmployee, picture] = await Promise.allSettled([
+        _httpClient.get(`masterdata/employee?begda=${today}&pernr=${userId}`),
+        _httpClient.get(`masterdata/photo?pernr=${userId}`),
+      ]);
+
+      if (dataEmployee.status === 'fulfilled') {
+        setMasterDataInfo(dataEmployee.value.data[0].employee);
+      }
+
+      if (picture.status === 'fulfilled') {
+        setProfilePicture(`data:image/jpeg;base64,${picture.value.data.profilePicture}`);
+      } else {
+        setProfilePicture(withoutPicture)
+      }
+    };
+
+    fetchMasterdata();
+  }, [userId]);
+
   return (
     <header className="header">
       <Container fluid>
         <div className="text-center">
           <Image
-            src="https://images.ctfassets.net/1wryd5vd9xez/6imn4PsoUBr6I9Hs8jWxk4/b28965e1afec63588266cf42ba5178ae/https___cdn-images-1.medium.com_max_2000_1_7hkI-ZKsglnbjxCRV1bMZA.png"
+            src={profilePicture}
             roundedCircle
             className="profileImage my-2"
+            alt="Header image"
           />
           <div className="infoHeaderEmployee text-light">
-            <div className="idEmployee d-inline me-3">id-empleado</div>
-            <div className="position d-inline me-3">Puesto</div>
-            <div className="department d-inline me-3">Departamento</div>
-            <div className="email d-inline">correo@naagura.com</div>
+            <div className="idEmployee d-inline me-3">
+              {masterDataInfo?.pernr || "-"}
+            </div>
+            <div className="position d-inline me-3">
+              {masterDataInfo.organization?.ename || "-"}
+            </div>
+            <div className="department d-inline me-3">
+              {masterDataInfo.organization?.t_Orgeh || "-"}
+            </div>
+            <div className="email d-inline">
+              {masterDataInfo.organization?.t_Plans || "-"}
+            </div>
           </div>
         </div>
       </Container>

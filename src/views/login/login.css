@@ -1,0 +1,49 @@
+.bgLogin {
+  background-color: #bcd1f3;
+  height: 100vh;
+  padding-top: 15vh;
+}
+
+.formContainer {
+  width: 25%;
+  padding: 30px 5px 45px 5px;
+  border: 1px solid #0173c7;
+  border-radius: 10px;
+  background-color: #0173c7;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formContainer .easyLogo {
+  width: 215px;
+  margin-bottom: 10px;
+}
+
+.formContainer .inputContainer {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.formContainer input[type="submit"],
+.formContainer input[type="button"] {
+  background-color: #101820;
+  color: white;
+  width: 46%;
+  height: 40px;
+  border-radius: 5px;
+  border-width: 0;
+}
+
+.buttonsContainer {
+  width: 80%;
+}
+
+/* hide the eye of password input in Edge */
+/* ::-ms-reveal {
+  display: none;
+} */

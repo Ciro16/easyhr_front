@@ -6,10 +6,12 @@
 }
 
 .header .profileImage {
-  max-width: 80px;
+  width: 85px;
+  height: 85px;
   border-width: 3px;
   border-style: solid;
   border-color: white;
+  object-fit: contain;
 }
 
 .header .infoHeaderEmployee {

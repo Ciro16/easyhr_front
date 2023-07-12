@@ -1,5 +1,5 @@
 .reportToAndScheduleContainer {
-  height: 210px;
+  /* height: 310px; */
 }
 
 .reportToCard,
@@ -7,6 +7,10 @@
   background-color: var(--bg-card-color);
   border-radius: 6px;
   overflow: hidden;
+}
+
+.scheduleWorkCard {
+  margin-top: 15px
 }
 
 .reportToContent .position {

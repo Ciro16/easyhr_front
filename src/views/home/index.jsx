@@ -14,7 +14,7 @@ const Home = () => {
         "https://images.ctfassets.net/1wryd5vd9xez/4DxzhQY7WFsbtTkoYntq23/a4a04701649e92a929010a6a860b66bf/https___cdn-images-1.medium.com_max_2000_1_Y6l_FDhxOI1AhjL56dHh8g.jpeg",
     },
     {
-      name: "Un MMG",
+      name: "Otra Gente",
       image:
         "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3NjA4Mjc3NHx8ZW58MHx8fHx8&w=1000&q=80",
     },
@@ -27,7 +27,7 @@ const Home = () => {
         "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg",
     },
     {
-      name: "Un cuero malo",
+      name: "Karol G",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSICgZaLrjTma41IB4mBlt-ocIqAVoy4wpT4JwHbXgn&s",
     },

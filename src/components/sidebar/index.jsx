@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 const Sidebar = () => {
@@ -17,11 +17,10 @@ const Sidebar = () => {
           <Link to="/dashboard/organizational-chart">Organigrama</Link>
         </li>
 
-        <li className="text-center  border-bottom">
-          <Link to="/page3">Solicitudes</Link>
-        </li>
+        {/* <li className="text-center  border-bottom">
+            <Link to="/dashboard/request">Solicitudes</Link>
+          </li> */}
       </ul>
-      <Outlet />
     </div>
   );
 };

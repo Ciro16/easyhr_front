@@ -1,14 +1,16 @@
+import PropTypes from "prop-types";
+
 import { Image } from "react-bootstrap";
 import "./reportToAndScheduleCard.css";
 
-const ReportToAndSchedule = () => {
+const ReportToAndSchedule = ({ scheduleInfo }) => {
   return (
-    <div className="reportToAndScheduleContainer d-flex flex-column justify-content-between">
+    <div className="reportToAndScheduleContainer d-flex flex-column">
       <section className="reportToCard border ps-3 pt-3">
         <header>
-          <h6>Reporta a</h6>
+          <h6> Reporta a </h6>
         </header>
-        <div className="reportToContent  py-2 border-bottom border-success border-opacity-10 d-flex align-items-center justify-content-between">
+        <div className="reportToContent py-2 border-bottom border-success border-opacity-10 d-flex align-items-center justify-content-between">
           <div className="d-flex">
             <Image
               src="https://thumbs.dreamstime.com/b/hispanic-man-smiling-square-9383237.jpg"
@@ -17,9 +19,9 @@ const ReportToAndSchedule = () => {
             />
             <div className="d-flex flex-column ps-2">
               <span className="idNameEmployee">
-                <span className="fw-semibold">Juan Ramirez</span>
+                <span className="fw-semibold"> Juan Ramirez </span>
               </span>
-              <span className="position fw-light">Manager - HR</span>
+              <span className="position fw-light"> Manager - HR </span>
             </div>
           </div>
 
@@ -31,21 +33,40 @@ const ReportToAndSchedule = () => {
 
       <section className="scheduleWorkCard border ps-3 py-3">
         <header>
-          <h6>Horario de trabajo</h6>
+          <h6> Horario de trabajo </h6>
         </header>
 
         <div className="scheduleTitleRow d-flex justify-content-between pe-5">
-          <span>Plan de trabajo</span>
-          <span>T-A</span>
+          <span> Hora Inicio </span>
+          <span> {scheduleInfo?.sobeg || "-"} </span>
         </div>
 
         <div className="scheduleTitleRow d-flex justify-content-between pe-5">
-          <span>Horas diarias</span>
-          <span>8.00</span>
+          <span> Hora Fin </span>
+          <span> {scheduleInfo?.soend || "-"} </span>
+        </div>
+
+        <div className="scheduleTitleRow d-flex justify-content-between pe-5">
+          <span> Plan de trabajo </span>
+          <span> {scheduleInfo?.t_Schkz || "-"} </span>
+        </div>
+
+        <div className="scheduleTitleRow d-flex justify-content-between pe-5">
+          <span> Horas diarias </span>
+          <span> {scheduleInfo?.arbst || "-"} </span>
+        </div>
+
+        <div className="scheduleTitleRow d-flex justify-content-between pe-5">
+          <span> Indicador de tiempos </span>
+          <span> {scheduleInfo?.t_Zterf || "-"} </span>
         </div>
       </section>
     </div>
   );
+};
+
+ReportToAndSchedule.propTypes = {
+  scheduleInfo: PropTypes.object,
 };
 
 export default ReportToAndSchedule;

@@ -1,12 +1,11 @@
-.organizationalDataCard {
+.addressDataCard {
   position: relative;
 
   background-color: var(--bg-card-color);
   border-radius: 6px;
-  height: 223px;
 }
 
-.organizationalDataCard::before {
+.addressDataCard::before {
   position: absolute;
   left: -15px;
 
@@ -17,6 +16,6 @@
   background-color: #52b99e;
 }
 
-.organizationalInfo {
+.addressInfo {
   font-size: 13px;
 }
