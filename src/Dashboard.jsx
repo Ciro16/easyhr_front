@@ -1,11 +1,11 @@
-import { Col, Row } from "react-bootstrap";
-import "./Dashboard.css";
-import Header from "./components/header";
-import Sidebar from "./components/sidebar";
+import { Col, Row } from 'react-bootstrap'
+import './Dashboard.css'
+import Header from './components/header'
+import Sidebar from './components/sidebar'
 
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom'
 
-function Dashboard() {
+function Dashboard () {
   return (
     <>
       <Header />
@@ -21,7 +21,7 @@ function Dashboard() {
         </Col>
       </Row>
     </>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard

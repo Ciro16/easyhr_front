@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import { Image } from "react-bootstrap";
-import OrganizationalLevel from "../organizationalLevel";
+import PropTypes from 'prop-types'
+import { Image } from 'react-bootstrap'
+import OrganizationalLevel from '../organizationalLevel'
 
-import withoutPicture from "../../../assets/without_profile.png"
+import withoutPicture from '../../../assets/without_profile.png'
 
 const OrganizationalCard = ({ infoCard, childs }) => {
   return (
@@ -33,12 +33,12 @@ const OrganizationalCard = ({ infoCard, childs }) => {
         childs={[]}
       />
     </li>
-  );
-};
+  )
+}
 
 OrganizationalCard.propTypes = {
   infoCard: PropTypes.object,
-  childs: PropTypes.array,
-};
+  childs: PropTypes.array
+}
 
-export default OrganizationalCard;
+export default OrganizationalCard

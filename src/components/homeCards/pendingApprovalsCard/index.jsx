@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import "./pendingApprovalsCard.css";
-import PendingApprovalsRow from "./pendingApprovalsRow";
+import PropTypes from 'prop-types'
+import './pendingApprovalsCard.css'
+import PendingApprovalsRow from './pendingApprovalsRow'
 
 const PendingApprovals = ({ title, counter }) => {
   return (
@@ -26,12 +26,12 @@ const PendingApprovals = ({ title, counter }) => {
         image="https://square-vn.com/app/dscms/assets/images/person-1.jpg?v=1653932875"
       />
     </section>
-  );
-};
+  )
+}
 
 PendingApprovals.propTypes = {
   title: PropTypes.string,
-  counter: PropTypes.number,
-};
+  counter: PropTypes.number
+}
 
-export default PendingApprovals;
+export default PendingApprovals

@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import "./hoursAbsenteeismCard.css";
+import PropTypes from 'prop-types'
+import './hoursAbsenteeismCard.css'
 
 const HoursAbsenteeismCard = ({ title }) => {
   return (
@@ -33,11 +33,11 @@ const HoursAbsenteeismCard = ({ title }) => {
         <span className="session ms-2">Hrs</span>
       </div>
     </section>
-  );
-};
+  )
+}
 
 HoursAbsenteeismCard.propTypes = {
-  title: PropTypes.string,
-};
+  title: PropTypes.string
+}
 
-export default HoursAbsenteeismCard;
+export default HoursAbsenteeismCard

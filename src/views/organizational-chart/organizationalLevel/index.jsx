@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import OrganizationalCard from "../organizationalCard";
+import PropTypes from 'prop-types'
+import OrganizationalCard from '../organizationalCard'
 
 const OrganizationalLevel = ({ father, childs }) => {
   if (father.length !== 0) {
@@ -15,13 +15,13 @@ const OrganizationalLevel = ({ father, childs }) => {
           ))}
         </ul>
       </>
-    );
+    )
   }
-};
+}
 
 OrganizationalLevel.propTypes = {
   father: PropTypes.array,
-  childs: PropTypes.array,
-};
+  childs: PropTypes.array
+}
 
-export default OrganizationalLevel;
+export default OrganizationalLevel

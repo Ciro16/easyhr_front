@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
-import { Image } from "react-bootstrap";
-import "./reportToAndScheduleCard.css";
+import { Image } from 'react-bootstrap'
+import './reportToAndScheduleCard.css'
 
 const ReportToAndSchedule = ({ scheduleInfo }) => {
   return (
@@ -38,35 +38,35 @@ const ReportToAndSchedule = ({ scheduleInfo }) => {
 
         <div className="scheduleTitleRow d-flex justify-content-between pe-5">
           <span> Hora Inicio </span>
-          <span> {scheduleInfo?.sobeg || "-"} </span>
+          <span> {scheduleInfo?.sobeg || '-'} </span>
         </div>
 
         <div className="scheduleTitleRow d-flex justify-content-between pe-5">
           <span> Hora Fin </span>
-          <span> {scheduleInfo?.soend || "-"} </span>
+          <span> {scheduleInfo?.soend || '-'} </span>
         </div>
 
         <div className="scheduleTitleRow d-flex justify-content-between pe-5">
           <span> Plan de trabajo </span>
-          <span> {scheduleInfo?.t_Schkz || "-"} </span>
+          <span> {scheduleInfo?.t_Schkz || '-'} </span>
         </div>
 
         <div className="scheduleTitleRow d-flex justify-content-between pe-5">
           <span> Horas diarias </span>
-          <span> {scheduleInfo?.arbst || "-"} </span>
+          <span> {scheduleInfo?.arbst || '-'} </span>
         </div>
 
         <div className="scheduleTitleRow d-flex justify-content-between pe-5">
           <span> Indicador de tiempos </span>
-          <span> {scheduleInfo?.t_Zterf || "-"} </span>
+          <span> {scheduleInfo?.t_Zterf || '-'} </span>
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
 ReportToAndSchedule.propTypes = {
-  scheduleInfo: PropTypes.object,
-};
+  scheduleInfo: PropTypes.object
+}
 
-export default ReportToAndSchedule;
+export default ReportToAndSchedule

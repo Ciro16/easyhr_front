@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import "./generalNoticeCard.css";
-import GeneralNoticeCardRow from "./generalNoticeRow";
+import PropTypes from 'prop-types'
+import './generalNoticeCard.css'
+import GeneralNoticeCardRow from './generalNoticeRow'
 
 const GeneralNoticeCard = ({ title }) => {
   return (
@@ -22,11 +22,11 @@ const GeneralNoticeCard = ({ title }) => {
         image="https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg"
       />
     </section>
-  );
-};
+  )
+}
 
 GeneralNoticeCard.propTypes = {
-  title: PropTypes.string,
-};
+  title: PropTypes.string
+}
 
-export default GeneralNoticeCard;
+export default GeneralNoticeCard

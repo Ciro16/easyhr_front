@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import "./sidebar.css";
+import { Link } from 'react-router-dom'
+import './sidebar.css'
 
 const Sidebar = () => {
   return (
@@ -22,7 +22,7 @@ const Sidebar = () => {
           </li> */}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

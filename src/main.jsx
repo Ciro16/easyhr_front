@@ -1,20 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Dashboard from "./Dashboard.jsx";
-import { HashRouter, Routes, Route } from "react-router-dom";
-import { Toaster } from "sonner";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Dashboard from './Dashboard.jsx'
+import { HashRouter, Routes, Route } from 'react-router-dom'
+import { Toaster } from 'sonner'
 
-import Login from "./views/login";
-import Home from "./views/home";
-import Profile from "./views/profile";
-import OrganizationalChart from "./views/organizational-chart";
+import Login from './views/login'
+import Home from './views/home'
+import Profile from './views/profile'
+import OrganizationalChart from './views/organizational-chart'
 // import Request from "./views/request";
 
-import { ProtectedRoute } from "./components/protectedRoute";
+import { ProtectedRoute } from './components/protectedRoute'
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HashRouter>
       {/* Notifications */}
@@ -47,4 +47,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </Routes>
     </HashRouter>
   </React.StrictMode>
-);
+)

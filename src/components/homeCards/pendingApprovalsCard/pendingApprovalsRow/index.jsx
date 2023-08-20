@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { Image } from "react-bootstrap";
-import "./pendingApprovalsRow.css";
+import PropTypes from 'prop-types'
+import { Image } from 'react-bootstrap'
+import './pendingApprovalsRow.css'
 
 const Pending = ({ title, image }) => {
   return (
@@ -14,12 +14,12 @@ const Pending = ({ title, image }) => {
       </div>
       <Image src={image} roundedCircle className="smallImage me-3" />
     </div>
-  );
-};
+  )
+}
 
 Pending.propTypes = {
   title: PropTypes.string,
-  image: PropTypes.string,
-};
+  image: PropTypes.string
+}
 
-export default Pending;
+export default Pending

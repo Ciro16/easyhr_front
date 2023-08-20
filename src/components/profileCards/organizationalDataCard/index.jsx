@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
-import "./organizationalDataCard.css";
+import './organizationalDataCard.css'
 
 const OrganizationalDataCard = ({ organizationalDataInfo }) => {
   return (
@@ -11,39 +11,39 @@ const OrganizationalDataCard = ({ organizationalDataInfo }) => {
 
       <div className="organizationalInfo my-2 pe-3 d-flex justify-content-between">
         <span> Sociedad </span>
-        <span> {organizationalDataInfo?.t_Bukrs || "-"} </span>
+        <span> {organizationalDataInfo?.t_Bukrs || '-'} </span>
       </div>
 
       <div className="organizationalInfo my-2 pe-3 d-flex justify-content-between">
         <span> Departamento </span>
-        <span> {organizationalDataInfo?.t_Orgeh || "-"} </span>
+        <span> {organizationalDataInfo?.t_Orgeh || '-'} </span>
       </div>
 
       <div className="organizationalInfo my-2 pe-3 d-flex justify-content-between">
         <span> Posición </span>
-        <span> {organizationalDataInfo?.t_Plans || "-"} </span>
+        <span> {organizationalDataInfo?.t_Plans || '-'} </span>
       </div>
 
       <div className="organizationalInfo my-2 pe-3 d-flex justify-content-between">
         <span> Puesto </span>
-        <span> {organizationalDataInfo?.t_Stell || "-"} </span>
+        <span> {organizationalDataInfo?.t_Stell || '-'} </span>
       </div>
 
       <div className="organizationalInfo my-2 pe-3 d-flex justify-content-between">
         <span> Ubicación </span>
-        <span> {organizationalDataInfo?.t_Werks || "-"} </span>
+        <span> {organizationalDataInfo?.t_Werks || '-'} </span>
       </div>
 
       <div className="organizationalInfo my-2 pe-3 d-flex justify-content-between">
         <span> Localidad </span>
-        <span> {organizationalDataInfo?.t_Btrtl || "-"} </span>
+        <span> {organizationalDataInfo?.t_Btrtl || '-'} </span>
       </div>
     </section>
-  );
-};
+  )
+}
 
 OrganizationalDataCard.propTypes = {
-  organizationalDataInfo: PropTypes.object,
-};
+  organizationalDataInfo: PropTypes.object
+}
 
-export default OrganizationalDataCard;
+export default OrganizationalDataCard

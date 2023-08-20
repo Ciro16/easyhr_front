@@ -1,28 +1,28 @@
-import html2pdf from "html2pdf.js";
-import "./organizationalChart.css";
-import { useState, useEffect, useRef } from "react";
-import OrganizationalLevel from "./organizationalLevel";
-import { _httpClient } from "../../utils/httpClient";
-import useStore from "../../store/store";
+// import html2pdf from 'html2pdf.js'
+import './organizationalChart.css'
+import { useState, useEffect, useRef } from 'react'
+import OrganizationalLevel from './organizationalLevel'
+import { _httpClient } from '../../utils/httpClient'
+import useStore from '../../store/store'
 
 const OrganizationalChart = () => {
-  const [chartData, setChartData] = useState([]);
-  const organizationalChart = useRef(null);
+  const [chartData, setChartData] = useState([])
+  const organizationalChart = useRef(null)
 
-  const { userId } = useStore((state) => state.userInfo);
+  const { userId } = useStore((state) => state.userInfo)
 
   useEffect(() => {
-    const abortController = new AbortController();
-    const { signal } = abortController;
+    const abortController = new AbortController()
+    const { signal } = abortController
 
     const fetchChartData = async () => {
       try {
-        const today = new Date().toISOString().split("T")[0];
+        const today = new Date().toISOString().split('T')[0]
 
         const { data } = await _httpClient.get(
           `chart/employee?begda=${today}&pernr=${userId}`,
           { signal }
-        );
+        )
 
         const picturesRequest = data[0]?.charting.organization.map((org) => _httpClient.get(`masterdata/photo?pernr=${org.pernr}`))
 
@@ -36,41 +36,41 @@ const OrganizationalChart = () => {
           }
         })
 
-        setChartData(data);
+        setChartData(data)
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
+    }
 
-    fetchChartData();
+    fetchChartData()
 
     return () => {
-      abortController.abort();
-    };
-  }, [userId]);
+      abortController.abort()
+    }
+  }, [userId])
 
   useEffect(() => {
-    const scrollElement = organizationalChart.current;
+    const scrollElement = organizationalChart.current
 
     // Movemos la barra de scroll al centro para que el diagrama venga centralizado
     if (scrollElement) {
       scrollElement.scrollLeft =
-        (scrollElement.scrollWidth - scrollElement.clientWidth) / 2;
+        (scrollElement.scrollWidth - scrollElement.clientWidth) / 2
     }
-  }, [chartData]);
+  }, [chartData])
 
-  const printPDF = async () => {
-    const options = {
-      margin: [30, 0, 0, 0],
-      enableLinks: false,
-      html2canvas: { useCORS: true },
-      jsPDF: { orientation: "landscape" },
-    };
+  // const printPDF = async () => {
+  //   const options = {
+  //     margin: [30, 0, 0, 0],
+  //     enableLinks: false,
+  //     html2canvas: { useCORS: true },
+  //     jsPDF: { orientation: 'landscape' }
+  //   }
 
-    await html2pdf().set(options).from(organizationalChart.current).save();
-  };
+  //   await html2pdf().set(options).from(organizationalChart.current).save()
+  // }
 
-  const organigrama = chartData[0]?.charting;
+  const organigrama = chartData[0]?.charting
 
   return (
     <div className="chartContainer">
@@ -80,22 +80,24 @@ const OrganizationalChart = () => {
         </button>
       </div> */}
 
-      {organigrama ? (
+      {organigrama
+        ? (
         <div className="organizationalChart" ref={organizationalChart}>
           <OrganizationalLevel
             father={[
               {
                 orgeh: organigrama.mainOrgeh,
                 stext: organigrama.stext,
-                descr: organigrama.t_Tipun,
-              },
+                descr: organigrama.t_Tipun
+              }
             ]}
             childs={organigrama?.organization}
           />
         </div>
-      ) : null}
+          )
+        : null}
     </div>
-  );
-};
+  )
+}
 
-export default OrganizationalChart;
+export default OrganizationalChart

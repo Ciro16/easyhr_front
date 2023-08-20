@@ -1,18 +1,18 @@
-import PropTypes from "prop-types";
-import { Navigate } from "react-router-dom";
-import { isCookieSet } from "../../utils/cookiesActions";
-import useStore from "../../store/store";
+import PropTypes from 'prop-types'
+import { Navigate } from 'react-router-dom'
+import { isCookieSet } from '../../utils/cookiesActions'
+import useStore from '../../store/store'
 
 export const ProtectedRoute = ({ children }) => {
-  const isAuth = useStore((state) => state.isAuth);
+  const isAuth = useStore((state) => state.isAuth)
 
-  if (!isAuth || !isCookieSet("_auth_token")) {
-    return <Navigate to="/" replace />;
+  if (!isAuth || !isCookieSet('_auth_token')) {
+    return <Navigate to="/" replace />
   }
 
-  return children;
-};
+  return children
+}
 
 ProtectedRoute.propTypes = {
-  children: PropTypes.element,
-};
+  children: PropTypes.element
+}

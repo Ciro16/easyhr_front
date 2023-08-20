@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { Image } from "react-bootstrap";
-import "./teamRow.css";
+import PropTypes from 'prop-types'
+import { Image } from 'react-bootstrap'
+import './teamRow.css'
 
 const TeamCardRow = ({ name, image }) => {
   return (
@@ -16,12 +16,12 @@ const TeamCardRow = ({ name, image }) => {
         </span>
       </div>
     </div>
-  );
-};
+  )
+}
 
 TeamCardRow.propTypes = {
   name: PropTypes.string,
-  image: PropTypes.string,
-};
+  image: PropTypes.string
+}
 
-export default TeamCardRow;
+export default TeamCardRow

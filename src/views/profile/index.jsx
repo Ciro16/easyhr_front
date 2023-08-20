@@ -1,46 +1,46 @@
-import { Col, Row } from "react-bootstrap";
-import "./profile.css";
+import { Col, Row } from 'react-bootstrap'
+import './profile.css'
 
-import BasicInfoCard from "../../components/profileCards/basicInfoCard";
-import ReportToAndSchedule from "../../components/profileCards/reportToAndScheduleCard";
-import OrganizationalDataCard from "../../components/profileCards/organizationalDataCard";
-import SalaryCard from "../../components/profileCards/salaryCard";
-import AddressDataCard from "../../components/profileCards/addressDataCard";
+import BasicInfoCard from '../../components/profileCards/basicInfoCard'
+import ReportToAndSchedule from '../../components/profileCards/reportToAndScheduleCard'
+import OrganizationalDataCard from '../../components/profileCards/organizationalDataCard'
+import SalaryCard from '../../components/profileCards/salaryCard'
+import AddressDataCard from '../../components/profileCards/addressDataCard'
 
-import { useEffect, useState } from "react";
-import { _httpClient } from "../../utils/httpClient";
+import { useEffect, useState } from 'react'
+import { _httpClient } from '../../utils/httpClient'
 
-import useStore from "../../store/store";
+import useStore from '../../store/store'
 
 const Profile = () => {
-  const { userId } = useStore((state) => state.userInfo);
-  const [masterDataInfo, setMasterDataInfo] = useState({});
+  const { userId } = useStore((state) => state.userInfo)
+  const [masterDataInfo, setMasterDataInfo] = useState({})
 
   useEffect(() => {
-    const abortController = new AbortController();
-    const { signal } = abortController;
+    const abortController = new AbortController()
+    const { signal } = abortController
 
     const fetchMasterdata = async () => {
       try {
-        const today = new Date().toISOString().split("T")[0];
+        const today = new Date().toISOString().split('T')[0]
 
         const { data } = await _httpClient.get(
           `masterdata/employee?begda=${today}&pernr=${userId}`,
           { signal }
-        );
+        )
 
-        setMasterDataInfo(data[0].employee);
+        setMasterDataInfo(data[0].employee)
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
+    }
 
-    fetchMasterdata();
+    fetchMasterdata()
 
     return () => {
-      abortController.abort();
-    };
-  }, [userId]);
+      abortController.abort()
+    }
+  }, [userId])
 
   return (
     <Row className="profileContainer g-3">
@@ -62,7 +62,7 @@ const Profile = () => {
         <AddressDataCard addressDataInfo={masterDataInfo.address} />
       </Col>
     </Row>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile

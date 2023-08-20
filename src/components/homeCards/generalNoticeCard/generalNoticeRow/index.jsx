@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { Image } from "react-bootstrap";
-import "./generalNoticeRow.css";
+import PropTypes from 'prop-types'
+import { Image } from 'react-bootstrap'
+import './generalNoticeRow.css'
 
 const GeneralNoticeCardRow = ({ title, description, image }) => {
   return (
@@ -12,13 +12,13 @@ const GeneralNoticeCardRow = ({ title, description, image }) => {
         <Image src={image} className="smallImage me-3" roundedCircle />
       </div>
     </div>
-  );
-};
+  )
+}
 
 GeneralNoticeCardRow.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  image: PropTypes.string,
-};
+  image: PropTypes.string
+}
 
-export default GeneralNoticeCardRow;
+export default GeneralNoticeCardRow

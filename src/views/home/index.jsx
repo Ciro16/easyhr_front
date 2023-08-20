@@ -1,42 +1,42 @@
-import { Col, Row } from "react-bootstrap";
-import "./home.css";
-import TeamCard from "../../components/homeCards/teamCard";
-import GeneralNoticeCard from "../../components/homeCards/generalNoticeCard";
-import PendingApprovals from "../../components/homeCards/pendingApprovalsCard";
-import AbsenteeismCard from "../../components/homeCards/absenteeismCard";
-import HoursAbsenteeismCard from "../../components/homeCards/hoursAbsenteeismCard";
+import { Col, Row } from 'react-bootstrap'
+import './home.css'
+import TeamCard from '../../components/homeCards/teamCard'
+import GeneralNoticeCard from '../../components/homeCards/generalNoticeCard'
+import PendingApprovals from '../../components/homeCards/pendingApprovalsCard'
+import AbsenteeismCard from '../../components/homeCards/absenteeismCard'
+import HoursAbsenteeismCard from '../../components/homeCards/hoursAbsenteeismCard'
 
 const Home = () => {
   const team = [
     {
-      name: "Christine Spalding",
+      name: 'Christine Spalding',
       image:
-        "https://images.ctfassets.net/1wryd5vd9xez/4DxzhQY7WFsbtTkoYntq23/a4a04701649e92a929010a6a860b66bf/https___cdn-images-1.medium.com_max_2000_1_Y6l_FDhxOI1AhjL56dHh8g.jpeg",
+        'https://images.ctfassets.net/1wryd5vd9xez/4DxzhQY7WFsbtTkoYntq23/a4a04701649e92a929010a6a860b66bf/https___cdn-images-1.medium.com_max_2000_1_Y6l_FDhxOI1AhjL56dHh8g.jpeg'
     },
     {
-      name: "Otra Gente",
+      name: 'Otra Gente',
       image:
-        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3NjA4Mjc3NHx8ZW58MHx8fHx8&w=1000&q=80",
-    },
-  ];
+        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3NjA4Mjc3NHx8ZW58MHx8fHx8&w=1000&q=80'
+    }
+  ]
 
   const favorites = [
     {
-      name: "Juan de lo Palote",
+      name: 'Juan de lo Palote',
       image:
-        "https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg",
+        'https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg'
     },
     {
-      name: "Karol G",
+      name: 'Karol G',
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSICgZaLrjTma41IB4mBlt-ocIqAVoy4wpT4JwHbXgn&s",
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSICgZaLrjTma41IB4mBlt-ocIqAVoy4wpT4JwHbXgn&s'
     },
     {
-      name: "Goku",
+      name: 'Goku',
       image:
-        "https://i.pinimg.com/originals/9d/6c/3e/9d6c3e7d32e7db9f31592faafe9a7d5b.png",
-    },
-  ];
+        'https://i.pinimg.com/originals/9d/6c/3e/9d6c3e7d32e7db9f31592faafe9a7d5b.png'
+    }
+  ]
 
   return (
     <Row className="homeContainer g-3">
@@ -59,7 +59,7 @@ const Home = () => {
         <PendingApprovals title="Aprovaciones pendientes" counter={6} />
       </Col>
     </Row>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

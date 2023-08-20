@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import "./teamCard.css";
-import TeamCardRow from "./teamRow";
+import PropTypes from 'prop-types'
+import './teamCard.css'
+import TeamCardRow from './teamRow'
 
 const TeamCard = ({ title, counter, infoRow }) => {
   return (
@@ -19,13 +19,13 @@ const TeamCard = ({ title, counter, infoRow }) => {
           />
         ))}
     </section>
-  );
-};
+  )
+}
 
 TeamCard.propTypes = {
   title: PropTypes.string,
   counter: PropTypes.number,
-  infoRow: PropTypes.array,
-};
+  infoRow: PropTypes.array
+}
 
-export default TeamCard;
+export default TeamCard

@@ -1,77 +1,77 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-import { useNavigate } from "react-router-dom";
-import { _httpClient, parseJwt } from "../../utils/httpClient";
-import { setCookie } from "../../utils/cookiesActions";
+import { useNavigate } from 'react-router-dom'
+import { _httpClient, parseJwt } from '../../utils/httpClient'
+import { setCookie } from '../../utils/cookiesActions'
 
-import "./login.css";
-import easyLogo from "../../assets/white_logo_transparent_background.png";
-import useStore from "../../store/store";
-import Spinner from "../../components/spinner";
+import './login.css'
+import easyLogo from '../../assets/white_logo_transparent_background.png'
+import useStore from '../../store/store'
+import Spinner from '../../components/spinner'
 
-import { toast } from "sonner";
+import { toast } from 'sonner'
 
 const initialFormValues = () => {
   return {
-    rnc: "",
-    usuario: "",
-    clave: "",
-  };
-};
+    rnc: '',
+    usuario: '',
+    clave: ''
+  }
+}
 
 const Login = () => {
-  const [loginForm, setLoginForm] = useState(initialFormValues);
-  const [loading, setLoading] = useState(false);
+  const [loginForm, setLoginForm] = useState(initialFormValues)
+  const [loading, setLoading] = useState(false)
   // const [error, setError] = useState(false)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const setAuth = useStore((state) => state.setIsAuth);
-  const setUserInfo = useStore((state) => state.setUserInfo);
+  const setAuth = useStore((state) => state.setIsAuth)
+  const setUserInfo = useStore((state) => state.setUserInfo)
 
   const handleChange = (e) => {
-    const inputName = e.target.name,
-      inputValue = e.target.value;
+    const inputName = e.target.name
+    const inputValue = e.target.value
 
-    if (inputName === "rnc") {
-      if (e.target.checkValidity() || inputValue === "") {
+    if (inputName === 'rnc') {
+      if (e.target.checkValidity() || inputValue === '') {
         setLoginForm({
           ...loginForm,
-          [inputName]: inputValue,
-        });
+          [inputName]: inputValue
+        })
       }
     } else {
       setLoginForm({
         ...loginForm,
-        [inputName]: inputValue,
-      });
+        [inputName]: inputValue
+      })
     }
-  };
+  }
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    setLoading(true);
+    setLoading(true)
 
     try {
-      const { data } = await _httpClient.post(`authenticate/login`, loginForm);
+      const { data } = await _httpClient.post('authenticate/login', loginForm)
 
-      const payload = parseJwt(data.token);
+      const payload = parseJwt(data.token)
 
-      const expirationTime = new Date(payload.exp * 1000);
+      const expirationTime = new Date(payload.exp * 1000)
 
-      setCookie("_auth_token", data.token, expirationTime);
+      setCookie('_auth_token', data.token, expirationTime)
 
-      setUserInfo({ userId: data.pernr });
-      setAuth(true);
+      setUserInfo({ userId: data.pernr })
+      setAuth(true)
 
-      return navigate("/dashboard");
+      return navigate('/dashboard')
     } catch (error) {
-      toast.error("Error en las credenciales");
+      toast.error('Error en las credenciales')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <>
@@ -127,7 +127,7 @@ const Login = () => {
         </form>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

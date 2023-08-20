@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import AbsenteeismRow from "./absenteeismRow";
-import "./absenteeismCard.css";
+import PropTypes from 'prop-types'
+import AbsenteeismRow from './absenteeismRow'
+import './absenteeismCard.css'
 
 const AbsenteeismCard = ({ title }) => {
   return (
@@ -21,11 +21,11 @@ const AbsenteeismCard = ({ title }) => {
       <AbsenteeismRow title="PTO" value={3} endValue={12} />
       <AbsenteeismRow title="Stick-Leave" value={10} endValue={12} />
     </section>
-  );
-};
+  )
+}
 
 AbsenteeismCard.propTypes = {
-  title: PropTypes.string,
-};
+  title: PropTypes.string
+}
 
-export default AbsenteeismCard;
+export default AbsenteeismCard

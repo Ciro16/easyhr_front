@@ -1,16 +1,16 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 let store = (set) => ({
   isAuth: false,
-  setIsAuth: (isAuth) => set(() => ({ isAuth: isAuth })),
+  setIsAuth: (isAuth) => set(() => ({ isAuth })),
 
   userInfo: {},
-  setUserInfo: (userInfo) => set(() => ({ userInfo: userInfo })),
-});
+  setUserInfo: (userInfo) => set(() => ({ userInfo }))
+})
 
-store = persist(store, { name: "user" });
+store = persist(store, { name: 'user' })
 
-const useStore = create(store);
+const useStore = create(store)
 
-export default useStore;
+export default useStore
