@@ -5,6 +5,8 @@ import OrganizationalLevel from './organizationalLevel'
 import { _httpClient } from '../../utils/httpClient'
 import useStore from '../../store/store'
 
+import fatherWithoutPicture from '../../assets/father_without_profile.png'
+
 const OrganizationalChart = () => {
   const [chartData, setChartData] = useState([])
   const organizationalChart = useRef(null)
@@ -88,7 +90,8 @@ const OrganizationalChart = () => {
               {
                 orgeh: organigrama.mainOrgeh,
                 stext: organigrama.stext,
-                descr: organigrama.t_Tipun
+                descr: organigrama.t_Tipun,
+                picture: organigrama.picture ?? fatherWithoutPicture
               }
             ]}
             childs={organigrama?.organization}
