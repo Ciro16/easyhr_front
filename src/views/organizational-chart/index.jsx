@@ -40,6 +40,7 @@ const OrganizationalChart = () => {
 
         setChartData(data)
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error)
       }
     }

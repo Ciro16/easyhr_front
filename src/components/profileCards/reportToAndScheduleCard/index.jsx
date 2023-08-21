@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Image } from 'react-bootstrap'
 import './reportToAndScheduleCard.css'
 
-const ReportToAndSchedule = ({ scheduleInfo }) => {
+const ReportToAndSchedule = ({ reportToInfo, scheduleInfo, picture }) => {
   return (
     <div className="reportToAndScheduleContainer d-flex flex-column">
       <section className="reportToCard border ps-3 pt-3">
@@ -13,20 +13,20 @@ const ReportToAndSchedule = ({ scheduleInfo }) => {
         <div className="reportToContent py-2 border-bottom border-success border-opacity-10 d-flex align-items-center justify-content-between">
           <div className="d-flex">
             <Image
-              src="https://thumbs.dreamstime.com/b/hispanic-man-smiling-square-9383237.jpg"
+              src={picture}
               roundedCircle
               className="smallImage"
             />
             <div className="d-flex flex-column ps-2">
               <span className="idNameEmployee">
-                <span className="fw-semibold"> Juan Ramirez </span>
+                <span className="fw-semibold"> {reportToInfo?.s_Ename || '-'} </span>
               </span>
-              <span className="position fw-light"> Manager - HR </span>
+              <span className="position fw-light"> {reportToInfo?.s_Plans || '-'} </span>
             </div>
           </div>
 
           <div className="phoneNumeber pe-5">
-            <i className="bi bi-telephone"></i> 809 596 8034
+            <i className="bi bi-telephone"></i> {reportToInfo?.s_Conta || '-'}
           </div>
         </div>
       </section>
@@ -66,7 +66,9 @@ const ReportToAndSchedule = ({ scheduleInfo }) => {
 }
 
 ReportToAndSchedule.propTypes = {
-  scheduleInfo: PropTypes.object
+  reportToInfo: PropTypes.object,
+  scheduleInfo: PropTypes.object,
+  picture: PropTypes.object
 }
 
 export default ReportToAndSchedule

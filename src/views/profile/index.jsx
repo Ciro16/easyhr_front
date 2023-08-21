@@ -7,6 +7,8 @@ import OrganizationalDataCard from '../../components/profileCards/organizational
 import SalaryCard from '../../components/profileCards/salaryCard'
 import AddressDataCard from '../../components/profileCards/addressDataCard'
 
+import withoutImage from '../../assets/without_profile.png'
+
 import { useEffect, useState } from 'react'
 import { _httpClient } from '../../utils/httpClient'
 
@@ -15,31 +17,20 @@ import useStore from '../../store/store'
 const Profile = () => {
   const { userId } = useStore((state) => state.userInfo)
   const [masterDataInfo, setMasterDataInfo] = useState({})
+  const [picture, setPicture] = useState(null)
 
   useEffect(() => {
-    const abortController = new AbortController()
-    const { signal } = abortController
-
     const fetchMasterdata = async () => {
-      try {
-        const today = new Date().toISOString().split('T')[0]
+      const today = new Date().toISOString().split('T')[0]
 
-        const { data } = await _httpClient.get(
-          `masterdata/employee?begda=${today}&pernr=${userId}`,
-          { signal }
-        )
+      const dataEmployee = await _httpClient.get(`masterdata/employee?begda=${today}&pernr=${userId}`)
+      setMasterDataInfo((dataEmployee.data[0].employee))
 
-        setMasterDataInfo(data[0].employee)
-      } catch (error) {
-        console.log(error)
-      }
+      const picture = await _httpClient.get(`masterdata/photo?pernr=${dataEmployee.data[0].employee.organization.s_Pernr}`)
+      setPicture(`data:image/jpeg;base64,${picture.data.profilePicture}`)
     }
 
     fetchMasterdata()
-
-    return () => {
-      abortController.abort()
-    }
   }, [userId])
 
   return (
@@ -48,7 +39,7 @@ const Profile = () => {
         <BasicInfoCard basicInfo={masterDataInfo.personaldata} />
       </Col>
       <Col sm={12} md={5}>
-        <ReportToAndSchedule scheduleInfo={masterDataInfo.plannedWorking} />
+        <ReportToAndSchedule reportToInfo={masterDataInfo.organization} scheduleInfo={masterDataInfo.plannedWorking} picture={picture ?? withoutImage}/>
       </Col>
       <Col sm={12} md={7}>
         <OrganizationalDataCard
