@@ -3,7 +3,7 @@ import './organizationalChart.css'
 import { useState, useEffect, useRef } from 'react'
 import OrganizationalLevel from './organizationalLevel'
 import { _httpClient } from '../../utils/httpClient'
-import useStore from '../../store/store'
+import useStore from '../../store/userInfoStore'
 
 import fatherWithoutPicture from '../../assets/father_without_profile.png'
 
@@ -19,10 +19,16 @@ const OrganizationalChart = () => {
 
     const fetchChartData = async () => {
       try {
-        const today = new Date().toISOString().split('T')[0]
+        const today = new Date()
+
+        const year = today.toLocaleString('default', { year: 'numeric' })
+        const month = today.toLocaleString('default', { month: '2-digit' })
+        const day = today.toLocaleString('default', { day: '2-digit' })
+
+        const dateFormatted = `${year}-${month}-${day}`
 
         const { data } = await _httpClient.get(
-          `chart/employee?begda=${today}&pernr=${userId}`,
+          `chart/employee?begda=${dateFormatted}&pernr=${userId}`,
           { signal }
         )
 

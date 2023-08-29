@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Navigate } from 'react-router-dom'
 import { isCookieSet } from '../../utils/cookiesActions'
-import useStore from '../../store/store'
+import useStore from '../../store/userInfoStore'
 
 export const ProtectedRoute = ({ children }) => {
   const isAuth = useStore((state) => state.isAuth)

@@ -1,6 +1,8 @@
 import { Container, Image } from 'react-bootstrap'
 import './header.css'
-import useStore from '../../store/store'
+import useStore from '../../store/userInfoStore'
+import useRequestStore from '../../store/requestInfoStore'
+
 import { useEffect, useState } from 'react'
 import { _httpClient } from '../../utils/httpClient'
 
@@ -10,15 +12,24 @@ const Header = () => {
   const { userId } = useStore((state) => state.userInfo)
   const [masterDataInfo, setMasterDataInfo] = useState({})
 
+  const setRequestTypes = useRequestStore((state) => state.setRequestTypes)
+
   const [profilePicture, setProfilePicture] = useState('')
 
   useEffect(() => {
     const fetchMasterdata = async () => {
-      const today = new Date().toISOString().split('T')[0]
+      const today = new Date()
 
-      const [dataEmployee, picture] = await Promise.allSettled([
-        _httpClient.get(`masterdata/employee?begda=${today}&pernr=${userId}`),
-        _httpClient.get(`masterdata/photo?pernr=${userId}`)
+      const year = today.toLocaleString('default', { year: 'numeric' })
+      const month = today.toLocaleString('default', { month: '2-digit' })
+      const day = today.toLocaleString('default', { day: '2-digit' })
+
+      const dateFormatted = `${year}-${month}-${day}`
+
+      const [dataEmployee, picture, requestTypes] = await Promise.allSettled([
+        _httpClient.get(`masterdata/employee?begda=${dateFormatted}&pernr=${userId}`),
+        _httpClient.get(`masterdata/photo?pernr=${userId}`),
+        _httpClient.get('requests/types')
       ])
 
       if (dataEmployee.status === 'fulfilled') {
@@ -29,6 +40,11 @@ const Header = () => {
         setProfilePicture(`data:image/jpeg;base64,${picture.value.data.profilePicture}`)
       } else {
         setProfilePicture(withoutPicture)
+      }
+
+      // Para modulo solicitudes
+      if (requestTypes.status === 'fulfilled') {
+        setRequestTypes(requestTypes.value.data[0].requestItems)
       }
     }
 

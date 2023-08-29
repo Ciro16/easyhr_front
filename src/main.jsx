@@ -10,9 +10,10 @@ import Login from './views/login'
 import Home from './views/home'
 import Profile from './views/profile'
 import OrganizationalChart from './views/organizational-chart'
-// import Request from "./views/request";
+import Request from './views/request'
 
 import { ProtectedRoute } from './components/protectedRoute'
+import CreateRequest from './views/request/createRequest'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -31,18 +32,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             </ProtectedRoute>
           }
         >
-          <Route path="" element={<Home />} />
+          <Route path="home" element={<Home />} />
           <Route path="profile" element={<Profile />} />
           <Route
             path="organizational-chart"
             element={<OrganizationalChart />}
           />
-          {/* <Route
-            path="request"
-            element={
-                <Request />
-            }
-          /> */}
+          <Route path="request" element={<Request />}>
+            <Route path="" element={<CreateRequest />} />
+            <Route path="list" element={<h1>Lista</h1>} />
+          </Route>
         </Route>
       </Routes>
     </HashRouter>

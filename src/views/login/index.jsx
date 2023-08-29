@@ -6,17 +6,15 @@ import { setCookie } from '../../utils/cookiesActions'
 
 import './login.css'
 import easyLogo from '../../assets/white_logo_transparent_background.png'
-import useStore from '../../store/store'
+import useStore from '../../store/userInfoStore'
 import Spinner from '../../components/spinner'
 
 import { toast } from 'sonner'
 
-const initialFormValues = () => {
-  return {
-    rnc: '',
-    usuario: '',
-    clave: ''
-  }
+const initialFormValues = {
+  rnc: '',
+  usuario: '',
+  clave: ''
 }
 
 const Login = () => {
@@ -54,18 +52,22 @@ const Login = () => {
     setLoading(true)
 
     try {
-      const { data } = await _httpClient.post('authenticate/login', loginForm)
+      const response = await _httpClient.post('authenticate/login', loginForm)
 
-      const payload = parseJwt(data.token)
+      if (response.status === 200) {
+        const payload = parseJwt(response.data.token)
 
-      const expirationTime = new Date(payload.exp * 1000)
+        const expirationTime = new Date(payload.exp * 1000)
 
-      setCookie('_auth_token', data.token, expirationTime)
+        setCookie('_auth_token', response.data.token, expirationTime)
 
-      setUserInfo({ userId: data.pernr })
-      setAuth(true)
+        setUserInfo({ userId: response.data.pernr })
+        setAuth(true)
 
-      return navigate('/dashboard')
+        return navigate('/dashboard/home')
+      }
+
+      toast.error('Error en las credenciales')
     } catch (error) {
       toast.error('Error en las credenciales')
     } finally {

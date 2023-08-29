@@ -68,7 +68,7 @@ const ReportToAndSchedule = ({ reportToInfo, scheduleInfo, picture }) => {
 ReportToAndSchedule.propTypes = {
   reportToInfo: PropTypes.object,
   scheduleInfo: PropTypes.object,
-  picture: PropTypes.object
+  picture: PropTypes.string
 }
 
 export default ReportToAndSchedule

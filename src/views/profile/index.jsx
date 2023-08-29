@@ -12,7 +12,7 @@ import withoutImage from '../../assets/without_profile.png'
 import { useEffect, useState } from 'react'
 import { _httpClient } from '../../utils/httpClient'
 
-import useStore from '../../store/store'
+import useStore from '../../store/userInfoStore'
 
 const Profile = () => {
   const { userId } = useStore((state) => state.userInfo)
@@ -21,9 +21,15 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchMasterdata = async () => {
-      const today = new Date().toISOString().split('T')[0]
+      const today = new Date()
 
-      const dataEmployee = await _httpClient.get(`masterdata/employee?begda=${today}&pernr=${userId}`)
+      const year = today.toLocaleString('default', { year: 'numeric' })
+      const month = today.toLocaleString('default', { month: '2-digit' })
+      const day = today.toLocaleString('default', { day: '2-digit' })
+
+      const dateFormatted = `${year}-${month}-${day}`
+
+      const dataEmployee = await _httpClient.get(`masterdata/employee?begda=${dateFormatted}&pernr=${userId}`)
       setMasterDataInfo((dataEmployee.data[0].employee))
 
       const picture = await _httpClient.get(`masterdata/photo?pernr=${dataEmployee.data[0].employee.organization.s_Pernr}`)

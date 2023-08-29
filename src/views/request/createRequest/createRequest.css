@@ -1,0 +1,8 @@
+.requestContainer {
+  width: 75%;
+  padding-left: 20px;
+}
+
+textarea {
+  resize: none;
+}

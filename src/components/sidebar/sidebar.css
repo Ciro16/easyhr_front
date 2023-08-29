@@ -13,3 +13,7 @@
   display: block;
   padding: 15px 0px;
 }
+
+.sidebar .active {
+  color: var(--bs-nav-tabs-link-active-color)
+}
