@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react'
 import { _httpClient } from '../../utils/httpClient'
 
 import useStore from '../../store/userInfoStore'
+import { dateYMD } from '../../utils/date'
 
 const Profile = () => {
   const { userId } = useStore((state) => state.userInfo)
@@ -23,16 +24,16 @@ const Profile = () => {
     const fetchMasterdata = async () => {
       const today = new Date()
 
-      const year = today.toLocaleString('default', { year: 'numeric' })
-      const month = today.toLocaleString('default', { month: '2-digit' })
-      const day = today.toLocaleString('default', { day: '2-digit' })
+      const dateFormatted = dateYMD(today)
 
-      const dateFormatted = `${year}-${month}-${day}`
+      const dataEmployee = await _httpClient.get(
+        `masterdata/employee?begda=${dateFormatted}&pernr=${userId}`
+      )
+      setMasterDataInfo(dataEmployee.data[0].employee)
 
-      const dataEmployee = await _httpClient.get(`masterdata/employee?begda=${dateFormatted}&pernr=${userId}`)
-      setMasterDataInfo((dataEmployee.data[0].employee))
-
-      const picture = await _httpClient.get(`masterdata/photo?pernr=${dataEmployee.data[0].employee.organization.s_Pernr}`)
+      const picture = await _httpClient.get(
+        `masterdata/photo?pernr=${dataEmployee.data[0].employee.organization.s_Pernr}`
+      )
       setPicture(`data:image/jpeg;base64,${picture.data.profilePicture}`)
     }
 
@@ -45,7 +46,11 @@ const Profile = () => {
         <BasicInfoCard basicInfo={masterDataInfo.personaldata} />
       </Col>
       <Col sm={12} md={5}>
-        <ReportToAndSchedule reportToInfo={masterDataInfo.organization} scheduleInfo={masterDataInfo.plannedWorking} picture={picture ?? withoutImage}/>
+        <ReportToAndSchedule
+          reportToInfo={masterDataInfo.organization}
+          scheduleInfo={masterDataInfo.plannedWorking}
+          picture={picture ?? withoutImage}
+        />
       </Col>
       <Col sm={12} md={7}>
         <OrganizationalDataCard

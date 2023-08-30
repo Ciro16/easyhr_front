@@ -12,10 +12,10 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react"],
   "rules": {
-    "no-console": "warn"
+    "no-console": "warn",
+    "camelcase": "off"
+    // "ignoreDestructuring": 2
   }
 }

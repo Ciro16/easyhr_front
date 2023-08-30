@@ -14,6 +14,7 @@ import Request from './views/request'
 
 import { ProtectedRoute } from './components/protectedRoute'
 import CreateRequest from './views/request/createRequest'
+import ListRequests from './views/request/listRequest'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -40,10 +41,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           />
           <Route path="request" element={<Request />}>
             <Route path="" element={<CreateRequest />} />
-            <Route path="list" element={<h1>Lista</h1>} />
+            <Route path="list" element={<ListRequests />} />
           </Route>
         </Route>
       </Routes>
     </HashRouter>
-  </React.StrictMode>
+ </React.StrictMode>
 )

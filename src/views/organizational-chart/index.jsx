@@ -6,6 +6,7 @@ import { _httpClient } from '../../utils/httpClient'
 import useStore from '../../store/userInfoStore'
 
 import fatherWithoutPicture from '../../assets/father_without_profile.png'
+import { dateYMD } from '../../utils/date'
 
 const OrganizationalChart = () => {
   const [chartData, setChartData] = useState([])
@@ -20,19 +21,16 @@ const OrganizationalChart = () => {
     const fetchChartData = async () => {
       try {
         const today = new Date()
-
-        const year = today.toLocaleString('default', { year: 'numeric' })
-        const month = today.toLocaleString('default', { month: '2-digit' })
-        const day = today.toLocaleString('default', { day: '2-digit' })
-
-        const dateFormatted = `${year}-${month}-${day}`
+        const dateFormatted = dateYMD(today)
 
         const { data } = await _httpClient.get(
           `chart/employee?begda=${dateFormatted}&pernr=${userId}`,
           { signal }
         )
 
-        const picturesRequest = data[0]?.charting.organization.map((org) => _httpClient.get(`masterdata/photo?pernr=${org.pernr}`))
+        const picturesRequest = data[0]?.charting.organization.map((org) =>
+          _httpClient.get(`masterdata/photo?pernr=${org.pernr}`)
+        )
 
         const pictures = await Promise.allSettled(picturesRequest)
         pictures.forEach((picture, index) => {

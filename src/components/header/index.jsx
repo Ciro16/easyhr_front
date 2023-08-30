@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { _httpClient } from '../../utils/httpClient'
 
 import withoutPicture from '../../assets/without_profile.png'
+import { dateYMD } from '../../utils/date'
 
 const Header = () => {
   const { userId } = useStore((state) => state.userInfo)
@@ -19,15 +20,12 @@ const Header = () => {
   useEffect(() => {
     const fetchMasterdata = async () => {
       const today = new Date()
-
-      const year = today.toLocaleString('default', { year: 'numeric' })
-      const month = today.toLocaleString('default', { month: '2-digit' })
-      const day = today.toLocaleString('default', { day: '2-digit' })
-
-      const dateFormatted = `${year}-${month}-${day}`
+      const dateFormatted = dateYMD(today)
 
       const [dataEmployee, picture, requestTypes] = await Promise.allSettled([
-        _httpClient.get(`masterdata/employee?begda=${dateFormatted}&pernr=${userId}`),
+        _httpClient.get(
+          `masterdata/employee?begda=${dateFormatted}&pernr=${userId}`
+        ),
         _httpClient.get(`masterdata/photo?pernr=${userId}`),
         _httpClient.get('requests/types')
       ])
@@ -37,7 +35,9 @@ const Header = () => {
       }
 
       if (picture.status === 'fulfilled') {
-        setProfilePicture(`data:image/jpeg;base64,${picture.value.data.profilePicture}`)
+        setProfilePicture(
+          `data:image/jpeg;base64,${picture.value.data.profilePicture}`
+        )
       } else {
         setProfilePicture(withoutPicture)
       }

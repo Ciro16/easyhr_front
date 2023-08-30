@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import useStore from '../../../store/userInfoStore'
 import { toast } from 'sonner'
 import resetCreateRequestForm from '../../../utils/resetForm'
+import { dateYMD } from '../../../utils/date'
 
 const initialFormValues = {
   pernr: '',
@@ -26,12 +27,7 @@ const CreateRequest = () => {
   const { userId } = useStore((state) => state.userInfo)
 
   const today = new Date()
-
-  const year = today.toLocaleString('default', { year: 'numeric' })
-  const month = today.toLocaleString('default', { month: '2-digit' })
-  const day = today.toLocaleString('default', { day: '2-digit' })
-
-  const dateFormatted = `${year}-${month}-${day}`
+  const dateFormatted = dateYMD(today)
 
   const getReasons = async (type) => {
     try {
@@ -151,7 +147,10 @@ const CreateRequest = () => {
 
     const createRequest = async () => {
       try {
-        const response = await _httpClient.post('/requests/create', createRequestData)
+        const response = await _httpClient.post(
+          '/requests/create',
+          createRequestData
+        )
 
         if (response.status === 200) {
           setCreateRequestData(initialFormValues)
@@ -179,34 +178,41 @@ const CreateRequest = () => {
     <>
       <Row className="requestContainer">
         <form onSubmit={handleCreateRequest} className="row g-3">
-
           <div className="col-md-6">
-            <label className="form-label">
-              Tipo de solicitud
-            </label>
+            <label className="form-label">Tipo de solicitud</label>
             <select
               value={sessionStorage.getItem('requestType') || ''}
               onChange={fillReasons}
               required
-              name='reque'
-              className="form-select">
+              name="reque"
+              className="form-select"
+            >
               <option></option>
-              {requestTypes.length > 0 && requestTypes.map((type) => <option value={type.retyp} key={type.retyp}> {type.renam} </option>)}
+              {requestTypes.length > 0 &&
+                requestTypes.map((type) => (
+                  <option value={type.retyp} key={type.retyp}>
+                    {type.renam}
+                  </option>
+                ))}
             </select>
           </div>
 
           <div className="col-md-6">
-            <label className="form-label">
-              Motivo
-            </label>
+            <label className="form-label">Motivo</label>
             <select
               value={sessionStorage.getItem('motiv') || ''}
               onChange={handleChange}
               required
-              name='motiv'
-              className="form-select">
+              name="motiv"
+              className="form-select"
+            >
               <option></option>
-              {reasons.length > 0 && reasons.map((reason) => <option value={reason.motiv} key={reason.motiv}> {reason.stext} </option>)}
+              {reasons.length > 0 &&
+                reasons.map((reason) => (
+                  <option value={reason.motiv} key={reason.motiv}>
+                    {reason.stext}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -249,24 +255,23 @@ const CreateRequest = () => {
               name="stext"
               className="form-control"
               rows="4"
-              id="additionalComment">
-            </textarea>
+              id="additionalComment"
+            ></textarea>
           </div>
 
           <div className="col-md-6">
-            <label className="form-label">
-              Prioridad
-            </label>
+            <label className="form-label">Prioridad</label>
             <select
               value={sessionStorage.getItem('priov') || ''}
               onChange={handleChange}
               required
               name="priov"
-              className="form-select">
+              className="form-select"
+            >
               <option></option>
-              <option value='normal'>Normal</option>
-              <option value='media'>Media</option>
-              <option value='alta'>Alta</option>
+              <option value="normal">Normal</option>
+              <option value="media">Media</option>
+              <option value="alta">Alta</option>
             </select>
           </div>
 

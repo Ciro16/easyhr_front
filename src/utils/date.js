@@ -1,4 +1,4 @@
-const formatDate = (dateToFormat) => {
+const dateDMY = (dateToFormat) => {
   const date = new Date(dateToFormat)
 
   const day = date.getDate()
@@ -8,4 +8,12 @@ const formatDate = (dateToFormat) => {
   return `${day}/${month}/${year}`
 }
 
-export default formatDate
+const dateYMD = (dateToFormat) => {
+  const year = dateToFormat.toLocaleString('default', { year: 'numeric' })
+  const month = dateToFormat.toLocaleString('default', { month: '2-digit' })
+  const day = dateToFormat.toLocaleString('default', { day: '2-digit' })
+
+  return `${year}-${month}-${day}`
+}
+
+export { dateDMY, dateYMD }

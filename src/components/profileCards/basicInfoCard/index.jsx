@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 
-import formatDate from '../../../utils/date'
+import { dateDMY } from '../../../utils/date'
 import './basicInfoCard.css'
 
 const BasicInfoCard = ({ basicInfo }) => {
-  const date = formatDate(basicInfo?.gbdat)
+  const date = dateDMY(basicInfo?.gbdat)
 
   return (
     <section className="basicInfoCard border ps-3 pt-3">
