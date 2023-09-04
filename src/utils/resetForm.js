@@ -1,10 +1,13 @@
 function resetCreateRequestForm (form) {
-  form.reque.value = ''
+  form.retyp.value = ''
   form.motiv.value = ''
   form.begda.value = ''
-  form.endda.value = ''
   form.stext.value = ''
   form.priov.value = ''
+
+  if (form.endda) {
+    form.endda.value = ''
+  }
 
   sessionStorage.removeItem('requestType')
   sessionStorage.removeItem('motiv')

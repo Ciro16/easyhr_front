@@ -17,7 +17,7 @@ import CreateRequest from './views/request/createRequest'
 import ListRequests from './views/request/listRequest'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <HashRouter>
       {/* Notifications */}
       <Toaster richColors position="top-center" />
@@ -46,5 +46,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Route>
       </Routes>
     </HashRouter>
- </React.StrictMode>
+  // </React.StrictMode>
 )

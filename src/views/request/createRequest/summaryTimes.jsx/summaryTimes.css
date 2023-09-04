@@ -1,0 +1,23 @@
+.summaryTimesContainer {
+  border: 1px solid black;
+  padding: 30px;
+
+  margin-top: 70px;
+  margin-left: 40px;
+
+  width: 50%;
+}
+
+.timesHeader{
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+.timesRow{
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}

@@ -7,10 +7,11 @@ import useStore from '../../../store/userInfoStore'
 import { toast } from 'sonner'
 import resetCreateRequestForm from '../../../utils/resetForm'
 import { dateYMD } from '../../../utils/date'
+import SummaryTimes from './summaryTimes.jsx'
 
 const initialFormValues = {
   pernr: '',
-  reque: '',
+  retyp: '',
   motiv: '',
   efeda: '',
   begda: '',
@@ -25,6 +26,7 @@ const CreateRequest = () => {
   const [reasons, setReasons] = useState([])
   const [createRequestData, setCreateRequestData] = useState(initialFormValues)
   const { userId } = useStore((state) => state.userInfo)
+  const [showDateRange, setShowDateRange] = useState(true)
 
   const today = new Date()
   const dateFormatted = dateYMD(today)
@@ -55,7 +57,7 @@ const CreateRequest = () => {
       sessionStorage.removeItem('requestType')
       setCreateRequestData({
         ...createRequestData,
-        reque: ''
+        retyp: ''
       })
       setReasons([])
       return
@@ -63,7 +65,7 @@ const CreateRequest = () => {
 
     setCreateRequestData({
       ...createRequestData,
-      reque: requestType,
+      retyp: requestType,
       pernr: userId,
       efeda: dateFormatted,
       statu: '01'
@@ -71,13 +73,23 @@ const CreateRequest = () => {
 
     sessionStorage.setItem('requestType', requestType)
 
+    const type = requestTypes.find((type) => type.retyp === requestType)
+
+    if (type.usdat === 'X') {
+      sessionStorage.setItem('showDateRange', true)
+      setShowDateRange(true)
+    } else {
+      sessionStorage.setItem('showDateRange', false)
+      setShowDateRange(false)
+    }
+
     getReasons(requestType)
   }
 
   const handleChange = (e) => {
     e.preventDefault()
 
-    const element = e.target.name
+    const element = e.target.name10000001
     const elementValue = e.target.value
 
     if (elementValue === '') {
@@ -133,13 +145,24 @@ const CreateRequest = () => {
 
     storeValue[element]()
 
-    setCreateRequestData({
-      ...createRequestData,
-      [element]: elementValue,
-      pernr: userId,
-      efeda: dateFormatted,
-      statu: '01'
-    })
+    if (element === 'begda' && !showDateRange) {
+      setCreateRequestData({
+        ...createRequestData,
+        begda: elementValue,
+        endda: elementValue,
+        pernr: userId,
+        efeda: dateFormatted,
+        statu: '01'
+      })
+    } else {
+      setCreateRequestData({
+        ...createRequestData,
+        [element]: elementValue,
+        pernr: userId,
+        efeda: dateFormatted,
+        statu: '01'
+      })
+    }
   }
 
   const handleCreateRequest = (e) => {
@@ -147,6 +170,7 @@ const CreateRequest = () => {
 
     const createRequest = async () => {
       try {
+        // console.log(createRequestData);
         const response = await _httpClient.post(
           '/requests/create',
           createRequestData
@@ -169,22 +193,40 @@ const CreateRequest = () => {
   }
 
   useEffect(() => {
+    if (sessionStorage.getItem('showDateRange') === 'true') {
+      setShowDateRange(true)
+    } else {
+      setShowDateRange(false)
+    }
+
     if (sessionStorage.getItem('requestType')) {
       getReasons(sessionStorage.getItem('requestType'))
     }
+
+    setCreateRequestData({
+      pernr: userId,
+      retyp: sessionStorage.getItem('requestType') ?? '',
+      motiv: sessionStorage.getItem('motiv') ?? '',
+      efeda: dateFormatted,
+      begda: sessionStorage.getItem('begda') ?? '',
+      endda: sessionStorage.getItem('endda') ?? '',
+      stext: sessionStorage.getItem('stext') ?? '',
+      priov: sessionStorage.getItem('priov') ?? '',
+      statu: '01'
+    })
   }, [])
 
   return (
     <>
-      <Row className="requestContainer">
-        <form onSubmit={handleCreateRequest} className="row g-3">
+      <Row className="createRequestContainer">
+        <form onSubmit={handleCreateRequest} className="row g-3 col-6">
           <div className="col-md-6">
             <label className="form-label">Tipo de solicitud</label>
             <select
               value={sessionStorage.getItem('requestType') || ''}
               onChange={fillReasons}
               required
-              name="reque"
+              name="retyp"
               className="form-select"
             >
               <option></option>
@@ -218,7 +260,7 @@ const CreateRequest = () => {
 
           <div className="col-md-6">
             <label htmlFor="dateInit" className="form-label">
-              Fecha inicio
+              { showDateRange ? 'Fecha inicio' : 'Fecha' }
             </label>
             <input
               value={sessionStorage.getItem('begda') || ''}
@@ -231,20 +273,23 @@ const CreateRequest = () => {
             />
           </div>
 
-          <div className="col-md-6">
-            <label htmlFor="dateEnd" className="form-label">
-              Fecha fin
-            </label>
-            <input
-              value={sessionStorage.getItem('endda') || ''}
-              onChange={handleChange}
-              required
-              name="endda"
-              type="date"
-              className="form-control"
-              id="dateEnd"
-            />
-          </div>
+          {
+            showDateRange &&
+              <div className="col-md-6">
+                <label htmlFor="dateEnd" className="form-label">
+                  Fecha fin
+                </label>
+                <input
+                  value={sessionStorage.getItem('endda') || ''}
+                  onChange={handleChange}
+                  required
+                  name="endda"
+                  type="date"
+                  className="form-control"
+                  id="dateEnd"
+                />
+              </div>
+          }
 
           <div className="col-md-12">
             <label htmlFor="additionalComment">Comentatio adicional</label>
@@ -281,6 +326,7 @@ const CreateRequest = () => {
             </button>
           </div>
         </form>
+        <SummaryTimes />
       </Row>
     </>
   )
