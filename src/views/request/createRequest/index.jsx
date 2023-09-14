@@ -89,7 +89,7 @@ const CreateRequest = () => {
   const handleChange = (e) => {
     e.preventDefault()
 
-    const element = e.target.name10000001
+    const element = e.target.name
     const elementValue = e.target.value
 
     if (elementValue === '') {
@@ -170,7 +170,6 @@ const CreateRequest = () => {
 
     const createRequest = async () => {
       try {
-        // console.log(createRequestData);
         const response = await _httpClient.post(
           '/requests/create',
           createRequestData
@@ -260,7 +259,7 @@ const CreateRequest = () => {
 
           <div className="col-md-6">
             <label htmlFor="dateInit" className="form-label">
-              { showDateRange ? 'Fecha inicio' : 'Fecha' }
+              { showDateRange ? 'Fecha inicio' : 'Fecha estimada' }
             </label>
             <input
               value={sessionStorage.getItem('begda') || ''}

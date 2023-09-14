@@ -1,11 +1,11 @@
-const dateDMY = (dateToFormat) => {
+const dateDMY = (dateToFormat, separator = '/') => {
   const date = new Date(dateToFormat)
 
   const day = date.getDate()
   const month = ('0' + (date.getMonth() + 1)).slice(-2)
   const year = date.getFullYear()
 
-  return `${day}/${month}/${year}`
+  return `${day}${separator}${month}${separator}${year}`
 }
 
 const dateYMD = (dateToFormat) => {

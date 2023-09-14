@@ -3,6 +3,7 @@
   padding-right: 25px;
   overflow-y: scroll;
   overflow-x: hidden;
+  width: 75%;
 }
 
 .listRequestContainer thead th { 
