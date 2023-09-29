@@ -9,7 +9,7 @@ import { Toaster } from 'sonner'
 import Login from './views/login'
 import Home from './views/home'
 import Profile from './views/profile'
-import OrganizationalChart from './views/organizational-chart'
+import OrganizationalChart from './views/organizationalChart'
 import Request from './views/request'
 
 import { ProtectedRoute } from './components/protectedRoute'
