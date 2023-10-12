@@ -1,13 +1,10 @@
 import PropTypes from 'prop-types'
 
 import './salaryCard.css'
+import { moneyFormatter } from '../../../utils/numberFomatter'
 
 const SalaryCard = ({ salaryInfo }) => {
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 2
-  })
+  const formatter = moneyFormatter('currency', 'USD').format
 
   return (
     <section className="salaryCard border ps-3 pt-3">
@@ -17,7 +14,7 @@ const SalaryCard = ({ salaryInfo }) => {
 
       <div className="salaryInfo my-2 pe-5 py-2 border-bottom d-flex justify-content-between">
         <span className="fw-semibold"> Importe </span>
-        <span> {formatter.format(salaryInfo?.betrg) || '-'} </span>
+        <span> {formatter(salaryInfo?.betrg) || '-'} </span>
       </div>
 
       <div className="salaryInfo my-2 pe-5 py-2 border-bottom d-flex justify-content-between">
@@ -27,12 +24,12 @@ const SalaryCard = ({ salaryInfo }) => {
 
       <div className="salaryInfo my-2 pe-5 py-2 border-bottom d-flex justify-content-between">
         <span className="fw-semibold"> Salario promedio diario </span>
-        <span> {formatter.format(salaryInfo?.betrg / 23.83)} </span>
+        <span> {formatter(salaryInfo?.betrg / 23.83)} </span>
       </div>
 
       <div className="salaryInfo my-2 pe-5 py-2 border-bottom d-flex justify-content-between">
         <span className="fw-semibold"> Paquete anual </span>
-        <span> {formatter.format(salaryInfo?.betrg * 12)} </span>
+        <span> {formatter(salaryInfo?.betrg * 12)} </span>
       </div>
     </section>
   )

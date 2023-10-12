@@ -15,6 +15,7 @@ import Request from './views/request'
 import { ProtectedRoute } from './components/protectedRoute'
 import CreateRequest from './views/request/createRequest'
 import ListRequests from './views/request/listRequest'
+import PayrollFlyers from './views/payrollFlyers'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -42,6 +43,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="request" element={<Request />}>
             <Route path="" element={<CreateRequest />} />
             <Route path="list" element={<ListRequests />} />
+          </Route>
+          <Route
+            path="payroll-flyers"
+          >
+            <Route index element={<PayrollFlyers />}/>
+            <Route path=':id/:payrollType' element={<PayrollFlyers showDetail={true} />}/>
           </Route>
         </Route>
       </Routes>

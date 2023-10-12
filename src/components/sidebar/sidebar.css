@@ -6,6 +6,7 @@
 .sidebar ul li {
   list-style: none;
   border-color: var(--border-row-color) !important;
+  position: relative;
 }
 
 .sidebar ul li a {
@@ -16,4 +17,15 @@
 
 .sidebar .active {
   color: var(--bs-nav-tabs-link-active-color)
+}
+
+.sidebar li:has(.active)::before {
+  content: '';
+  background-color: #31ae4e;
+  height: 100%;
+  width: 7px;
+  border-radius: 2px;
+
+  position: absolute;
+  left: 4px;
 }

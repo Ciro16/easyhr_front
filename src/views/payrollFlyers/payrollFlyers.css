@@ -1,0 +1,11 @@
+.summary-payroll span {
+  display: block;
+}
+
+.listPayrollContainer {
+  height: calc(100vh - var(--header-height) - 250px);
+  padding-right: 25px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+}
