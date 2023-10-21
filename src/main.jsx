@@ -16,9 +16,10 @@ import { ProtectedRoute } from './components/protectedRoute'
 import CreateRequest from './views/request/createRequest'
 import ListRequests from './views/request/listRequest'
 import PayrollFlyers from './views/payrollFlyers'
+import Directory from './views/directory'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <HashRouter>
       {/* Notifications */}
       <Toaster richColors position="top-center" />
@@ -35,23 +36,29 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           }
         >
           <Route path="home" element={<Home />} />
+
           <Route path="profile" element={<Profile />} />
+
           <Route
             path="organizational-chart"
             element={<OrganizationalChart />}
           />
+
           <Route path="request" element={<Request />}>
             <Route path="" element={<CreateRequest />} />
             <Route path="list" element={<ListRequests />} />
           </Route>
+
           <Route
             path="payroll-flyers"
           >
             <Route index element={<PayrollFlyers />}/>
             <Route path=':id/:payrollType' element={<PayrollFlyers showDetail={true} />}/>
           </Route>
+
+          <Route path='directory' element={<Directory />} />
         </Route>
       </Routes>
     </HashRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 )

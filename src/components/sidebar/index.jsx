@@ -24,6 +24,10 @@ const Sidebar = () => {
         <li className="text-center border-bottom">
           <NavLink to="/dashboard/payroll-flyers">Volantes de Nómina</NavLink>
         </li>
+
+        <li className="text-center border-bottom">
+          <NavLink to="/dashboard/directory">Directorio</NavLink>
+        </li>
       </ul>
     </div>
   )
