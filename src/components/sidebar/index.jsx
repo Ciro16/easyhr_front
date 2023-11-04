@@ -28,6 +28,10 @@ const Sidebar = () => {
         <li className="text-center border-bottom">
           <NavLink to="/dashboard/directory">Directorio</NavLink>
         </li>
+
+        <li className="text-center border-bottom">
+          <NavLink to="/dashboard/birthday">Cumpleaños</NavLink>
+        </li>
       </ul>
     </div>
   )

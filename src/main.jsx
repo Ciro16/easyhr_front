@@ -17,9 +17,10 @@ import CreateRequest from './views/request/createRequest'
 import ListRequests from './views/request/listRequest'
 import PayrollFlyers from './views/payrollFlyers'
 import Directory from './views/directory'
+import Birthday from './views/birthday'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <HashRouter>
       {/* Notifications */}
       <Toaster richColors position="top-center" />
@@ -57,8 +58,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </Route>
 
           <Route path='directory' element={<Directory />} />
+
+          <Route path='birthday' element={<Birthday />} />
         </Route>
       </Routes>
     </HashRouter>
-  // </React.StrictMode>
+  </React.StrictMode>
 )

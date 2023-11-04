@@ -52,7 +52,7 @@ const PayrollFlyers = ({ showDetail }) => {
       <div style={{ borderBottom: '1px solid #dcdcdc' }}></div>
 
       <div className="container ms-0">
-        <select defaultValue="4" onChange={(e) => fetchPayrollSummary(e)} className="form-select mt-3 w-25" aria-label="Default select example">
+        <select defaultValue="00" onChange={(e) => fetchPayrollSummary(e)} className="form-select mt-3 w-25" aria-label="Default select example">
           <option value="00">Resumen del año</option>
           <option value="01">Enero</option>
           <option value="02">Febrero</option>

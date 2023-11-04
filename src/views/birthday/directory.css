@@ -1,0 +1,38 @@
+.directory-container {
+  /* width: 100%; */
+}
+
+.directory-container .card-text {
+  color: rgb(13, 110, 253)
+}
+
+.directory-container .card-title {
+  font-size: 15px;
+}
+
+.directory-container .card {
+  /* width: 350px; */
+}
+
+.directory-cards {
+  height: calc(100vh - var(--header-height) - 150px);
+  padding-right: 25px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.directory-image {
+  width: 65px;
+  height: 65px;
+  margin-left: auto;
+  margin-right: auto;
+  /* border-width: 3px; */
+  /* border-style: solid; */
+  /* border-color: white; */
+  /* object-fit: contain; */
+}
+
+.directory-container .cargo,
+.directory-container .phone-info {
+  font-size: 14px;
+}
