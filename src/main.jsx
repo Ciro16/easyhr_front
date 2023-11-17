@@ -18,6 +18,9 @@ import ListRequests from './views/request/listRequest'
 import PayrollFlyers from './views/payrollFlyers'
 import Directory from './views/directory'
 import Birthday from './views/birthday'
+import Dependents from './views/dependents'
+import CreateDependent from './views/dependents/createDependent'
+import ListDependents from './views/dependents/listDependent/index.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -60,6 +63,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='directory' element={<Directory />} />
 
           <Route path='birthday' element={<Birthday />} />
+
+          <Route path="dependents" element={<Dependents />}>
+            <Route path="" element={<CreateDependent />} />
+            <Route path="list" element={<ListDependents />} />
+          </Route>
         </Route>
       </Routes>
     </HashRouter>
