@@ -36,6 +36,10 @@ const Sidebar = () => {
         <li className="text-center border-bottom">
           <NavLink to="/dashboard/dependents">Dependientes</NavLink>
         </li>
+
+        <li className="text-center border-bottom">
+          <NavLink to="/dashboard/expenses">Gastos</NavLink>
+        </li>
       </ul>
     </div>
   )

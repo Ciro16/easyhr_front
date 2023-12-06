@@ -21,6 +21,9 @@ import Birthday from './views/birthday'
 import Dependents from './views/dependents'
 import CreateDependent from './views/dependents/createDependent'
 import ListDependents from './views/dependents/listDependent/index.jsx'
+import Expenses from './views/expenses/index.jsx'
+import CreateExpense from './views/expenses/createExpense/index.jsx'
+import ListExpenses from './views/expenses/listExpenses/index.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -67,6 +70,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="dependents" element={<Dependents />}>
             <Route path="" element={<CreateDependent />} />
             <Route path="list" element={<ListDependents />} />
+          </Route>
+
+          <Route path="expenses" element={<Expenses />}>
+            <Route path="" element={<CreateExpense />} />
+            <Route path="list" element={<ListExpenses />} />
           </Route>
         </Route>
       </Routes>

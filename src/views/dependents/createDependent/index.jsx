@@ -276,7 +276,7 @@ const CreateDependent = () => {
 
           <div className="col-12">
             <button type="submit" className="btn btn-primary">
-              Enviar solicitud
+              Crear dependiente
             </button>
           </div>
         </form>
