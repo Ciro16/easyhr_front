@@ -1,0 +1,37 @@
+
+/* HomeCard */
+.card {
+}
+
+.card-icon-container {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-info .card-title {
+  font-size: 20px;
+}
+
+.card-info .card-value {
+  font-size: 16px;
+  font-weight: 500;
+}
+/* HomeCard */
+
+/* ProgressBar */
+.progress-bar-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-top: 7px;
+  width: 100%;
+  height: 3px;
+}
+
+.progressPercentage {
+  font-size: 13px;
+}
+/* ProgressBar */

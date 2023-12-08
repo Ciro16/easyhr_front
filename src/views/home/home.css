@@ -4,3 +4,29 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+.tasks-container,
+.notifications-container {
+  border: 2px solid #e9edee;
+  height: 280px;
+  padding: 10px 0px 10px 10px;
+  overflow-y: hidden;
+}
+
+.tasks-title,
+.notifications-title {
+  font-size: 25px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e9edee;
+}
+
+.tasks {
+  height: 223px;
+  overflow-y: scroll;
+}
+
+.notifications {
+  margin-top: 20px;
+  height: 223px;
+  overflow-y: scroll;
+}

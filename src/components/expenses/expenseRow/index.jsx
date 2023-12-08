@@ -33,7 +33,7 @@ ExpenseRow.propTypes = {
   RNC: PropTypes.string,
   concepto: PropTypes.string,
   ncf: PropTypes.string,
-  importe: PropTypes.string,
+  importe: PropTypes.number,
   moneda: PropTypes.string
 }
 

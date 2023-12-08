@@ -27,6 +27,7 @@ const CreateExpense = () => {
   const [expenseTypes, setExpenseTypes] = useState([])
   const [reasons, setReasons] = useState([])
   const [currencies, setCurrencies] = useState([])
+  const [showElement, setShowElement] = useState(true)
 
   const [createExpenseData, setCreateExpenseData] = useState(initialFormValues)
   const { userId } = useStore((state) => state.userInfo)
@@ -37,6 +38,14 @@ const CreateExpense = () => {
     handleChange(e)
 
     const expenseType = e.target.value
+
+    const esAvanceDeGasto = expenseType === '0002'
+
+    setShowElement(true)
+
+    if (esAvanceDeGasto) {
+      setShowElement(false)
+    }
 
     if (!expenseType) {
       setReasons([])
@@ -219,18 +228,21 @@ const CreateExpense = () => {
             />
           </div>
 
-          <div className="col-md-6">
-            <label htmlFor="ncfn" className="form-label">NCF</label>
-            <input
-              value={createExpenseData.ncfn}
-              onChange={handleChange}
-              required
-              name="ncfn"
-              type="text"
-              className="form-control"
-              id="ncfn"
-            />
-          </div>
+          {
+            showElement &&
+              <div className="col-md-6">
+                <label htmlFor="ncfn" className="form-label">NCF</label>
+                <input
+                  value={createExpenseData.ncfn}
+                  onChange={handleChange}
+                  required
+                  name="ncfn"
+                  type="text"
+                  className="form-control"
+                  id="ncfn"
+                />
+              </div>
+          }
 
           <div className="col-md-6">
             <label htmlFor="betrg" className="form-label">Importe</label>
@@ -264,10 +276,13 @@ const CreateExpense = () => {
             </select>
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="formFile" className="form-label">Adjuntar factura</label>
-            <input onChange={handleFileChange} id="formFile" className="form-control" type="file" required name="bill" accept="application/pdf, image/jpeg, image/png" />
-          </div>
+          {
+            showElement && 
+              <div className="mb-3">
+                <label htmlFor="formFile" className="form-label">Adjuntar factura</label>
+                <input onChange={handleFileChange} id="formFile" className="form-control" type="file" required name="bill" accept="application/pdf, image/jpeg, image/png" />
+              </div>
+          }
 
           <div className="col-12">
             <button type="submit" className="btn btn-primary">

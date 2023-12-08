@@ -1,64 +1,122 @@
 import { Col, Row } from 'react-bootstrap'
 import './home.css'
-import TeamCard from '../../components/homeCards/teamCard'
-import GeneralNoticeCard from '../../components/homeCards/generalNoticeCard'
-import PendingApprovals from '../../components/homeCards/pendingApprovalsCard'
-import AbsenteeismCard from '../../components/homeCards/absenteeismCard'
-import HoursAbsenteeismCard from '../../components/homeCards/hoursAbsenteeismCard'
+import antiguedad from '../../assets/home/antiguedad.png'
+import diasVacaciones from '../../assets/home/diasVacaciones.png'
+import diasDisfrutados from '../../assets/home/diasDisfrutados.png'
+import tardanzas from '../../assets/home/tardanzas.png'
+import ausencias from '../../assets/home/ausencias.png'
+import devengadoALaFecha from '../../assets/home/devengadoALaFecha.png'
 
+import HomeCard from '../../components/homeCard'
+import Notification from '../../components/notifications'
+import Task from '../../components/Tasks'
+import { useEffect, useState } from 'react'
+import { _httpClient } from '../../utils/httpClient'
+import useStore from '../../store/userInfoStore'
+import { dateYMD } from '../../utils/date'
+ 
 const Home = () => {
-  const team = [
-    {
-      name: 'Christine Spalding',
-      image:
-        'https://images.ctfassets.net/1wryd5vd9xez/4DxzhQY7WFsbtTkoYntq23/a4a04701649e92a929010a6a860b66bf/https___cdn-images-1.medium.com_max_2000_1_Y6l_FDhxOI1AhjL56dHh8g.jpeg'
-    },
-    {
-      name: 'Otra Gente',
-      image:
-        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3NjA4Mjc3NHx8ZW58MHx8fHx8&w=1000&q=80'
-    }
-  ]
+  const { userId } = useStore((state) => state.userInfo)
+  const [dashboardData, setDashboardData] = useState([])
+  const [notifications, setNotifications] = useState([])
+  const [tasks, setTasks] = useState([])
 
-  const favorites = [
-    {
-      name: 'Juan de lo Palote',
-      image:
-        'https://images.squarespace-cdn.com/content/v1/559b2478e4b05d22b1e75b2d/1549568089409-SJ70E6DVG3XTE70232OL/Nesbit.jpg'
-    },
-    {
-      name: 'Karol G',
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSICgZaLrjTma41IB4mBlt-ocIqAVoy4wpT4JwHbXgn&s'
-    },
-    {
-      name: 'Goku',
-      image:
-        'https://i.pinimg.com/originals/9d/6c/3e/9d6c3e7d32e7db9f31592faafe9a7d5b.png'
-    }
-  ]
+  useEffect(() => {
+    const getDashboardData = async () => {
+      try {
+        const response = await _httpClient.get(
+          `masterdata/dashdata?pernr=${userId}&begda=${dateYMD(new Date())}`
+        )
 
+        if (response.status === 200) {
+          setDashboardData(response.data.dashboardItems)
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error)
+      }
+    }
+
+    getDashboardData()
+
+    const getNotifications = async () => {
+      try {
+        const response = await _httpClient.get('news/rrhh')
+
+        if (response.status === 200) {
+          setNotifications(response.data[0].newsItems)
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error)
+      }
+    }
+
+    getNotifications()
+
+    const getTasks = async () => {
+      try {
+        const response = await _httpClient.get(
+          `masterdata/tasks?pernr=${userId}`
+        )
+
+        if (response.status === 200) {
+          setTasks(response.data[0].taskItems)
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error)
+      }
+    }
+
+    getTasks()
+  }, [])
+  
   return (
-    <Row className="homeContainer g-3">
-      <Col sm={12} md={6} lg={4}>
-        <TeamCard title="Tu equipo" counter={2} infoRow={team} />
-      </Col>
-      <Col sm={12} md={6} lg={4}>
-        <TeamCard title="Favoritos" counter={3} infoRow={favorites} />
-      </Col>
-      <Col sm={12} md={6} lg={4}>
-        <GeneralNoticeCard title="Avisos Generales" />
-      </Col>
-      <Col sm={12} md={6} lg={4}>
-        <AbsenteeismCard title="Ausentismos" />
-      </Col>
-      <Col sm={12} md={6} lg={4}>
-        <HoursAbsenteeismCard title="Horas Ausentismos" />
-      </Col>
-      <Col sm={12} md={6} lg={4}>
-        <PendingApprovals title="Aprovaciones pendientes" counter={6} />
-      </Col>
-    </Row>
+    <>
+      <Row className="homeContainer g-3">
+        <HomeCard title='Antiguedad' value={dashboardData.lates} bgColor='#00c0ef' image={antiguedad} />
+        <HomeCard title='Días vacaciones' value={dashboardData.vacat} bgColor='#605ca8' image={diasVacaciones} />
+        <HomeCard title='Días disfrutados' value={dashboardData.enjoy} bgColor='#0073b6' image={diasDisfrutados} progressBar={true} />
+        <HomeCard title='Tardanzas' value={dashboardData.servt} bgColor='#dd4c39' image={tardanzas} />
+        <HomeCard title='Ausencias' value={dashboardData.absen} bgColor='#ff841a' image={ausencias} />
+        <HomeCard title='Devengado a la fecha' value={dashboardData.gaint} bgColor='#dd4c39' image={devengadoALaFecha} />
+      </Row>
+
+      <Row>
+        <Col md={6} lg={6}> 
+          <div className='notifications-container'>
+            <h2 className='notifications-title'>Notificaciones</h2>
+            <div className={
+              notifications.length > 0 ? 'notifications' : 'notifications d-flex justify-content-center align-items-center'
+            }>
+              {
+                notifications.length > 0 
+                  ? notifications.map(({title, messa, aedtm}) => (
+                      <Notification key={crypto.randomUUID()} title={title} description={messa} date={aedtm}/>
+                    ))
+                  : <p>No hay notificaciones</p>
+                }
+            </div>
+          </div>
+        </Col>
+
+        <Col md={6} lg={6}>
+          <div className='tasks-container'>
+            <h2 className='tasks-title'>Tareas pendientes</h2>
+            <div className={tasks.length > 0 ? 'tasks' : 'tasks d-flex justify-content-center align-items-center'}>
+              {
+                tasks.length > 0 
+                  ? tasks.map(({tmart_text, begda}) => (
+                      <Task key={crypto.randomUUID()} description={tmart_text} todayDate={begda}/>
+                    ))
+                  : <p>No hay tareas pendientes</p>
+              }
+            </div>
+          </div>
+        </Col>
+      </Row>
+    </>
   )
 }
 

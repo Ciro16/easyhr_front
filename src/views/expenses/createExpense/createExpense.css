@@ -1,5 +1,7 @@
 .createExpenseContainer{
   /* width: 70%; */
+  height: 450px;
+  overflow-y: scroll;
 }
 
 textarea {
