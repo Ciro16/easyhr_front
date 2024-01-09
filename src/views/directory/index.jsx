@@ -75,7 +75,7 @@ const Directory = () => {
 
       <input onChange={e => debouncedFetchDirectoryData(e.target.value)} className="form-control w-25 my-3" type="text" placeholder="Buscar" />
 
-      <div className="directory-cards row row-cols-1 row-cols-md-4 g-4 mt-0">
+      <div className="directory-cards row row-cols-1 row-cols-md-4 row-gap-3 mt-0">
         {
           directoryData.map(({ ename, t_Orgeh, t_Plans, conta, exten, picture }) => {
             return (

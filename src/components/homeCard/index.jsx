@@ -4,7 +4,7 @@ import { Col } from 'react-bootstrap'
 const HomeCard = ({ title, value, bgColor, image, progressBar = false }) => {
   const cardStyles = {
     backgroundColor: bgColor,
-    height: '90px',
+    height: '80px',
   }
 
   const progressBarFillerPrecentage = (5 / 11) * 100

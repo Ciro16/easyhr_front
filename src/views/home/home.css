@@ -1,8 +1,6 @@
 .homeContainer {
   max-height: calc(100vh - var(--header-height));
   padding-bottom: 1rem;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 .tasks-container,
@@ -27,6 +25,6 @@
 
 .notifications {
   margin-top: 20px;
-  height: 223px;
+  height: 212px;
   overflow-y: scroll;
 }

@@ -14,12 +14,15 @@ import { useEffect, useState } from 'react'
 import { _httpClient } from '../../utils/httpClient'
 import useStore from '../../store/userInfoStore'
 import { dateYMD } from '../../utils/date'
+import { moneyFormatter } from '../../utils/numberFomatter'
  
 const Home = () => {
   const { userId } = useStore((state) => state.userInfo)
   const [dashboardData, setDashboardData] = useState([])
   const [notifications, setNotifications] = useState([])
   const [tasks, setTasks] = useState([])
+
+  const formatter = moneyFormatter('currency', 'USD').format
 
   useEffect(() => {
     const getDashboardData = async () => {
@@ -80,7 +83,7 @@ const Home = () => {
         <HomeCard title='Días disfrutados' value={dashboardData.enjoy} bgColor='#0073b6' image={diasDisfrutados} progressBar={true} />
         <HomeCard title='Tardanzas' value={dashboardData.servt} bgColor='#dd4c39' image={tardanzas} />
         <HomeCard title='Ausencias' value={dashboardData.absen} bgColor='#ff841a' image={ausencias} />
-        <HomeCard title='Devengado a la fecha' value={dashboardData.gaint} bgColor='#dd4c39' image={devengadoALaFecha} />
+        <HomeCard title='Devengado a la fecha' value={formatter(dashboardData.gaint)} bgColor='#dd4c39' image={devengadoALaFecha} />
       </Row>
 
       <Row>
@@ -107,8 +110,8 @@ const Home = () => {
             <div className={tasks.length > 0 ? 'tasks' : 'tasks d-flex justify-content-center align-items-center'}>
               {
                 tasks.length > 0 
-                  ? tasks.map(({tmart_text, begda}) => (
-                      <Task key={crypto.randomUUID()} description={tmart_text} todayDate={begda}/>
+                  ? tasks.map(({tmart_text, begda, text1}) => (
+                      <Task key={crypto.randomUUID()} title={tmart_text} description={text1} todayDate={begda} />
                     ))
                   : <p>No hay tareas pendientes</p>
               }

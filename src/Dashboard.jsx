@@ -1,5 +1,6 @@
 import { Col, Row } from 'react-bootstrap'
 import './Dashboard.css'
+import StatusBar from './components/statusBar'
 import Header from './components/header'
 import Sidebar from './components/sidebar'
 
@@ -8,6 +9,7 @@ import { Outlet } from 'react-router-dom'
 function Dashboard () {
   return (
     <>
+      <StatusBar />
       <Header />
       <Row className="dashboardContainer">
         <Col xs={4} sm={2}>

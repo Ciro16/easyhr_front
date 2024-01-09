@@ -1,7 +1,5 @@
 .createDependentContainer{
-  /* width: 70%; */
-}
-
-textarea {
-  resize: none;
+  overflow-y: scroll;
+  padding-bottom: 25px;
+  height: 440px;
 }

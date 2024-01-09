@@ -137,7 +137,7 @@ const CreateExpense = () => {
   return (
     <>
       <Row className="createExpenseContainer">
-        <form onSubmit={createExpense} className="row g-3 col-6">
+        <form onSubmit={createExpense} className="row g-2 col-6">
           <div className="col-md-6">
             <label className="form-label">Tipo de gasto</label>
             <select

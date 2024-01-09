@@ -30,13 +30,21 @@
 }
 
 .formContainer input[type="submit"],
-.formContainer input[type="button"] {
+.formContainer a {
   background-color: #101820;
   color: white;
   width: 46%;
   height: 40px;
   border-radius: 5px;
   border-width: 0;
+}
+
+.formContainer a {
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .buttonsContainer {

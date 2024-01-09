@@ -124,7 +124,7 @@ const Login = () => {
           </div>
           <div className="buttonsContainer d-flex justify-content-between">
             <input type="submit" value="Iniciar sesión" />
-            <input type="button" value="Solicitar acceso" />
+            <a href='https://www.easyhr.com.do' target="_blank">Solicitar acceso</a>
           </div>
         </form>
       </div>

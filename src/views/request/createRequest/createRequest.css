@@ -1,5 +1,6 @@
 .createRequestContainer{
-  /* width: 70%; */
+  height: 420px;
+  overflow-y: scroll;
 }
 
 textarea {
