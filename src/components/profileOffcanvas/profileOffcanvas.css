@@ -1,0 +1,18 @@
+.status-offcanvas {
+  max-width: 80px;
+}
+
+.offcanvas-header {
+  position: relative;
+}
+
+button[class='btn-close'] {
+  font-size: 13px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+button[class='btn-close']:focus {
+  box-shadow: none;
+}

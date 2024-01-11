@@ -1,0 +1,19 @@
+.status-bar .easyhr-logo {
+  height: 30px;
+  padding: 5px 0px;
+}
+
+.status-bar .logout-icon,
+.status-bar .notifications-icon {
+  width: 22px;
+}
+
+.status-bar .notification-count {
+  font-size: 8px;
+  right: -5px;
+}
+
+.status-image {
+  max-width: 25px;
+  margin-left: 5px;
+}

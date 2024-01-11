@@ -1,5 +1,7 @@
 .bgLogin {
-  background-color: #bcd1f3;
+  background-image: url('../../assets/login/wallpaper-login.png');
+  background-size: cover;
+  background-position: 0px -60px;
   height: 100vh;
   padding-top: 15vh;
 }

@@ -6,7 +6,7 @@ const Sidebar = () => {
     <div className="sidebar border-end">
       <ul className="ps-0">
         <li className="border-bottom">
-          <NavLink to="/dashboard/home">Home</NavLink>
+          <NavLink to="/dashboard/home">Inicio</NavLink>
         </li>
 
         <li className="border-bottom">

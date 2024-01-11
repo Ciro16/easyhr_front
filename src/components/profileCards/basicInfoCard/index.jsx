@@ -84,7 +84,7 @@ const BasicInfoCard = ({ basicInfo }) => {
 
       <div className="basiInfo my-1 pe-3 d-flex justify-content-between">
         <span> Correo personal </span>
-        <span> {basicInfo?.mailp || '-'} </span>
+        <span> {basicInfo?.mailp?.toLowerCase() || '-'} </span>
       </div>
     </section>
   )
